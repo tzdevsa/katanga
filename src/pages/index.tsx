@@ -9,7 +9,7 @@ export default function Home({ organizationId }: Params) {
   );
 }
 
-// @ts-expect-error context has any
+// @ts-expect-error context has any type
 export async function getServerSideProps(context) {
   const { 'organization-id': organizationId } = context.query;
 
