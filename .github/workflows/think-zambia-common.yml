@@ -1,0 +1,27 @@
+# Warning: This file is copied from another repo.
+#   Any changes made to outside of the source repo may be overridden. 
+#   To modify, change the file at the source repo
+#
+#   https://github.com/think-zambia-foundation/github-settings/tree/main/.github/workflows/think-zambia-common.yml
+name: Check Developer Agreement
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, ready_for_review]
+  workflow_dispatch: {} #to enable manual triggering of the action. 
+
+jobs:
+  Pull-request-title-includes-jira-issue-key:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull request title includes jira issue (E.g. JIRA-123)
+        uses: ryanvade/enforce-pr-title-style-action@v1
+  QA-steps-checklist-done:
+    runs-on: ubuntu-latest
+    steps:
+      - name: QA steps checklist completed (E.g. [x] Build passed)
+        uses: mheap/require-checklist-action@v1
+        with:
+          requireChecklist: false # If this is true and there are no checklists detected, the action will fail
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

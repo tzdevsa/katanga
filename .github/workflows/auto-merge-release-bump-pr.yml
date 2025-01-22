@@ -1,0 +1,28 @@
+# Warning: This file is copied from another repo.
+#   Any changes made to outside of the source repo may be overridden. 
+#   To modify, change the file at the source repo
+#
+#   https://github.com/think-zambia-foundation/github-settings/tree/main/.github/workflows/auto-merge-release-bump-pr.yml
+name: Check auto merge service account pull requests
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, ready_for_review]
+    paths:
+      - '.github/**'
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    if: github.actor == 'tzdevsa'
+    steps:
+    - name: Automerging
+      uses: pascalgn/automerge-action@v0.7.5
+      env:
+        GITHUB_TOKEN: "${{ secrets.API_TOKEN_GITHUB }}"
+        GITHUB_LOGIN: tzdevsa
+        MERGE_LABELS: ""
+        MERGE_METHOD: "squash"
+        MERGE_COMMIT_MESSAGE: "Auto merge service account pull requests."
+        MERGE_RETRIES: "10"
+        MERGE_RETRY_SLEEP: "10000"
