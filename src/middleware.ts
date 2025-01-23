@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(req) {
+export function middleware(req: NextRequest) {
   const host = req.headers.get('host') || ''; // Get the hostname (e.g., org1.katanga.workspacezm.com)
 
   // Extract the subdomain
