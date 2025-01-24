@@ -2,6 +2,15 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Add .env.local file in the root of the project with the following content:
+
+```bash
+TZ_API_KEY=
+CORE_API=
+KATANGA_API=
+```
+
+
 First, run the development server:
 
 ```bash
