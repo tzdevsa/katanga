@@ -2,7 +2,7 @@ import { writeFile } from 'fs/promises';
 
 // Define the content of the .npmrc file
 const npmrcContent = `@think-zambia-foundation:registry=https://npm.pkg.github.com
-//registry.npmjs.org/:_authToken=${process.env.NPM_TOKEN}
+//npm.pkg.github.com/:_authToken=${process.env.NPM_TOKEN}
 `;
 
 try {
