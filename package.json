@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "node generate-npmrc.mjs && next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-npmrc": "node generate-npmrc.mjs"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
