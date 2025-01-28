@@ -9,7 +9,6 @@ import ProfileCard from "@/components/ProfileCard";
 export default async function Team({ organizationId }: { organizationId: string }) {
   const staff = await getStaff(organizationId);
 
-  console.log(staff);
   return (
     <section id="team">
       <Container maxWidth="lg">

@@ -90,6 +90,11 @@ export async function Footer({ organizationId }: { organizationId: string }) {
                 />
               </CardContent>
             </Grid>
+            <Grid item xs={12}>
+              <Typography variant='body2' align='center'>
+                Powered by <a href='https://katanga.workspacezm.com/' target='_blank'>Katanga</a>
+              </Typography>
+            </Grid>
           </Grid>
         </Container>
       </section>

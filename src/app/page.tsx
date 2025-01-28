@@ -6,7 +6,6 @@ import { Footer } from "@/components/Footer";
 import getOrganisationId from "@/lib/getOrganisationId";
 import About from "@/sections/About";
 import Hero from "@/sections/Hero";
-import { Container } from "@mui/material";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const organizationId = await getOrganisationId(searchParams) as string;
@@ -16,7 +15,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
   return (
     <>
       {organisation && (<Hero organization={organisation}/>)}
-      {organisation && (<Container maxWidth="md"><About services={services} organisation={organisation} /></Container>)}
+      {organisation && (<About services={services} organisation={organisation} />)}
       <Footer organizationId={organizationId} />
     </>
   );

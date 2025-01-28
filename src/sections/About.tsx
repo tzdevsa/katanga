@@ -1,8 +1,9 @@
 'use client';
-import { Container, Grid, Theme, Typography, useMediaQuery } from "@mui/material";
+import { CardContent, Container, Grid, Typography } from "@mui/material";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { Parallax } from 'react-scroll-parallax';
 import { Environment, Service } from "@think-zambia-foundation/api";
+import Link from "next/link";
+import ServiceCard from "@/components/ServiceCard";
 
 export default function About({ 
   services,
@@ -11,48 +12,94 @@ export default function About({
   services: Service[] 
   organisation: Environment
 }) {
-  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
-
   return (
     <section>
       <Container id="about" maxWidth="lg">
         <Grid
           container
           direction="row"
-          justifyContent="center"
-          alignItems="center"
-          spacing={5}
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          spacing={2}
         >
-          <Grid item xs={12} sm={9}>
-            <Parallax translateY={[-15, 15]} translateX={[-2, 0]}>
-              <Typography variant={isMobile ? "h4" : "h2"} fontWeight="bold" align="left" gutterBottom>
-                ABOUT
+          <Grid item xs={12}>
+            <CardContent>
+              <Link href="/about">
+                <Typography
+                  sx={{
+                    display: { xs: 'none', md: 'block' }, // Larger screens only
+                  }}
+                  variant="h4"
+                  component="h6"
+                  fontWeight="bold"
+                  align="left"
+                  gutterBottom
+                  textTransform="uppercase">
+                  ABOUT<ArrowRightIcon color="primary" />
+                </Typography>
+                <Typography
+                  sx={{
+                    display: { xs: 'block', md: 'none' }, // Mobile only
+                  }}
+                  variant="h6"
+                  component="h6"
+                  fontWeight="bold"
+                  align="left"
+                  gutterBottom
+                  textTransform="uppercase">
+                  ABOUT<ArrowRightIcon color="primary" />
+                </Typography>
+              </Link>
+              <Typography variant="h6" align="left" fontWeight="500" gutterBottom>
+                Welcome to {organisation?.name}, where we nurture academic excellence and moral integrity. Guided by Christian principles, we offer an all-embracing education that inspires our students to excel and become morally responsible citizens.
               </Typography>
-              <Typography variant={isMobile ? "h6" : "h5"} align="left" fontWeight="500" gutterBottom>
-                Welcome to {organisation?.name}, where learning meets inspiration! Our mission is to nurture curious minds and empower students to achieve their full potential. With a commitment to academic excellence and personal growth, we provide a supportive environment that encourages creativity, innovation, and lifelong learning. Join us in shaping bright futures!
-              </Typography>
-            </Parallax>
+            </CardContent>
           </Grid>
-          <Grid item xs={3} sx={{
-            display: {
-              xs: 'none',
-              sm: 'block',
-            }
-          }}>
-            <Parallax translateX={[5, -5]}>
-              {services?.length > 0 && (
-                <div>
-                  <Typography variant="subtitle1" fontWeight="bold" align="left" gutterBottom>
-                    What We Offer
-                  </Typography>
-                  {services?.map((service) => (
-                    <Typography key={service.serviceId} variant="subtitle1" align="left" gutterBottom textTransform="capitalize">
-                      <ArrowRightIcon color="primary" />{service.name}
-                    </Typography>
-                  ))}
-                </div>
-              )}
-            </Parallax>
+          <Grid item xs={12}>
+            <CardContent>
+              <Link href="/services">
+                <Typography
+                  sx={{
+                    display: { xs: 'none', md: 'block' }, // Larger screens only
+                  }}
+                  variant="h4"
+                  component="h6"
+                  fontWeight="bold"
+                  align="left"
+                  gutterBottom
+                  textTransform="uppercase">
+                  WHAT WE OFFER<ArrowRightIcon color="primary" />
+                </Typography>
+                <Typography
+                  sx={{
+                    display: { xs: 'block', md: 'none' }, // Mobile only
+                  }}
+                  variant="h6"
+                  component="h6"
+                  fontWeight="bold"
+                  align="left"
+                  gutterBottom
+                  textTransform="uppercase">
+                  WHAT WE OFFER<ArrowRightIcon color="primary" />
+                </Typography>
+              </Link>
+            </CardContent>
+            <Grid
+              sx={{
+                padding: 1,
+              }}
+              container
+              direction="row"
+              justifyContent="flex-start"
+              alignItems="flex-start"
+              spacing={1}
+            >
+              {services?.map((service) => (
+                <Grid item xs={12} sm={4} key={service.serviceId}>
+                  <ServiceCard service={service} />
+                </Grid>
+              ))}
+            </Grid>
           </Grid>
         </Grid>
       </Container>

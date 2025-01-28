@@ -288,11 +288,17 @@ export const services: NavBarItemProps[] = [
   {
     id: '2',
     key: '2',
-    text: 'Apply',
-    href: '/apply',
+    text: 'About',
+    href: '/about',
   },
   {
     id: '3',
+    key: '3',
+    text: 'Admissions',
+    href: '/apply',
+  },
+  {
+    id: '4',
     key: '4',
     text: 'CONTACT',
     href: '/contact',

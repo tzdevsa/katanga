@@ -1,12 +1,12 @@
 import { getOrganisation } from "@/actions/getOrganisation";
-import { formatAddressCityPostalCodeProvince } from "@/lib/formatAddress";
 import { Container, Grid, Typography } from "@mui/material";
 import getOrganisationId from "@/lib/getOrganisationId";
 import StudentApplication from "@/components/StudentApplication";
 import { Footer } from "@/components/Footer";
 import { HeroImage } from "@/components/HeroImage";
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-export default async function Contact({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+export default async function Apply({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const organizationId = await getOrganisationId(searchParams) as string;
   const organisation = await getOrganisation(organizationId)
 
@@ -39,11 +39,20 @@ export default async function Contact({ searchParams }: { searchParams: Promise<
                 >
                   Start your journey with us today!
                 </Typography>
-                <Typography textTransform="uppercase" color="primary" fontWeight="bold" variant="body2" align="left" gutterBottom>
-                  {organisation?.address?.addressLine1 && (<p>{organisation?.address?.addressLine1}</p>)}
-                  {organisation?.address?.addressLine2 && (<p>{organisation?.address?.addressLine2}</p>)}
-                  <p>{formatAddressCityPostalCodeProvince(organisation?.address)}</p>
-                  <p>{organisation?.address?.country}</p>
+                <Typography variant="subtitle1" align="left" gutterBottom>
+                  <ArrowRightIcon color="primary" />Complete and submit the form.
+                </Typography>
+                <Typography variant="subtitle1" align="left" gutterBottom>
+                  <ArrowRightIcon color="primary" />Take note of the application number.
+                </Typography>
+                <Typography variant="subtitle1" align="left" gutterBottom>
+                  <ArrowRightIcon color="primary" />Attend an entrance interview.
+                </Typography>
+                <Typography variant="subtitle1" align="left" gutterBottom>
+                  <ArrowRightIcon color="primary" />Receive your admission letter.
+                </Typography>
+                <Typography variant="subtitle1" align="left" gutterBottom>
+                  <ArrowRightIcon color="primary" />Prepare for enrollment.
                 </Typography>
               </Container>
             </Grid>
