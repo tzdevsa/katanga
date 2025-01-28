@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import "./globals.css";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Providers } from "./providers";
 import theme from "@/theme";
 
 export const metadata: Metadata = {
@@ -10,17 +14,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  searchParams
 }: Readonly<{
   children: React.ReactNode;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }>) {
   return (
     <html lang="en">
       <body>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            {children}
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <Providers>
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>
+              <Header />
+              <CssBaseline />
+              {children}
+              <Footer searchParams={searchParams} />
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </Providers>
       </body>
     </html>
   );
