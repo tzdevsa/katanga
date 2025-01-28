@@ -1,11 +1,12 @@
-import ProjectCard from "@/components/ProjectCard";
-import { getProjects } from "@/lib/getProjects";
+import { getProjects } from "@/actions/getProjects";
 import { Container, Grid, Typography } from "@mui/material";
 import Link from "next/link";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { Environment } from "@think-zambia-foundation/api";
+import ProjectCard from "@/components/ProjectCard";
 
-export default async function Projects() {
-  const projects = (await getProjects())?.splice(0, 2);
+export default async function Projects({organization} : {organization: Environment}) {
+  const projects = (await getProjects(organization.envId))?.splice(0, 2);
 
   return (
     <section>

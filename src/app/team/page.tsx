@@ -1,7 +1,14 @@
 import { HeroImage } from "@/components/HeroImage";
 import Team from "@/sections/Team";
 
-export default function AboutPage() {
+type Params = Promise<{ organizationId: string }>;
+
+export default async function AboutPage({
+  params,
+}: {
+  params: Params;
+}) {
+  const { organizationId } = await params;
   return (
     <>
       <HeroImage
@@ -11,7 +18,7 @@ export default function AboutPage() {
       />
       <main>
         <section>
-          <Team />
+          <Team organizationId={organizationId} />
         </section>
       </main>
     </>

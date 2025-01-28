@@ -2,8 +2,6 @@
 
 import { getOrganisation } from "@/actions/getOrganisation";
 import { getServices } from "@/actions/getServices";
-import StudentApplication from "@/components/StudentApplication";
-import Welcome from "@/components/Welcome";
 import getOrganisationId from "@/lib/getOrganisationId";
 import About from "@/sections/About";
 import Hero from "@/sections/Hero";
@@ -18,7 +16,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
     <Container maxWidth="md">
       {organisation && (
         <>
-          <Hero />
+          <Hero organization={organisation}/>
           <About services={services} organisation={organisation} />
         </>
       )}

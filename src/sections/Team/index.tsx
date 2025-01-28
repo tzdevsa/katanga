@@ -2,12 +2,12 @@ import {
   Container,
   Grid,
 } from "@mui/material";
-import ProfileCard from "@/components/ProfileCard";
+import { getStaff } from "@/actions/getStaff";
 import { Staff } from "@think-zambia-foundation/api";
-import { getStaff } from "@/lib/getStaff";
+import ProfileCard from "@/components/ProfileCard";
 
-export default async function Team() {
-  const staff = await getStaff();
+export default async function Team({ organizationId }: { organizationId: string }) {
+  const staff = await getStaff(organizationId);
 
   console.log(staff);
   return (
@@ -20,7 +20,7 @@ export default async function Team() {
           alignItems="flex-start"
           spacing={3}
         >
-          {staff?.map((staff) => (
+          {staff?.map((staff: Staff) => (
             <Grid key={staff.staffId} item xs={12} sm={4}>
               <ProfileCard staff={staff} />
             </Grid>

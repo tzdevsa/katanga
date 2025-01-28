@@ -1,7 +1,7 @@
 "use server";
 
+import { filterProjects } from "@/lib/filterProjects";
 import { Project } from "@think-zambia-foundation/api";
-import { filterProjects } from "./filterProjects";
 
 export const getProjects = async (organisationId: string) => {
   try {

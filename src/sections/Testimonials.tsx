@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { getReviews } from "@/actions/getReviews";
 import { ReviewCard } from "@/components/ReviewCard";
-import { getReviews } from "@/lib/getReviews";
-import { Typography, Grid, Container, Box } from "@mui/material";
+import { Typography, Grid, Container } from "@mui/material";
 
 export default async function Testimonials() {
   // Get the first three reviews with a rating greater than 4
-  const reviews = (await getReviews())?.filter((review: any) => review.rating > 4).splice(0, 3);
+  const reviews = (await getReviews())?.filter((review: { rating: number; }) => review.rating > 4).splice(0, 3);
 
   return (
     <section id="testimonials" style={{

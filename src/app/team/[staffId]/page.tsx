@@ -1,21 +1,20 @@
 import { HeroImage } from '@/components/HeroImage';
-import { getStaffById } from '@/lib/getStaffById';
+import { getStaffById } from '@/actions/getStaffById';
 import { Box, Card, CardContent, Container, Divider, Grid, Typography } from '@mui/material';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
-type Params = Promise<{ staffId: string }>;
+type Params = Promise<{ staffId: string, organizationId: string }>;
 
 export default async function TeamMember({
   params,
 }: {
   params: Params;
 }) {
-  const { staffId } = await params;
-  const staff = await getStaffById(staffId)
+  const { staffId, organizationId } = await params;
+  const staff = await getStaffById(staffId, organizationId)
 
   const position = staff?.positions[0]?.job?.description;
 

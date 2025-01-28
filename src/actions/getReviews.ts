@@ -6,7 +6,7 @@ export const getReviews = async () => {
       const data = await res?.json()
       return data?.result?.reviews;
     })
-    .catch((err) => {
+    .catch(() => {
       return []
     })
 }

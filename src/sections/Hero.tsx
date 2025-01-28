@@ -2,12 +2,12 @@ import EmblaCarousel from "@/components/EmblaCarousel";
 import { EmblaOptionsType } from 'embla-carousel'
 import '../css/embla.css'
 import { getServices } from "@/actions/getServices";
-import { Service } from "@think-zambia-foundation/api";
+import { Environment, Service } from "@think-zambia-foundation/api";
 
 const OPTIONS: EmblaOptionsType = { loop: true }
 
-export default async function Hero() {
-  const services = await getServices();
+export default async function Hero({organization} : {organization: Environment}) {
+  const services = await getServices(organization.envId);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const slides: any[] = services.map((service: Service) => ({
