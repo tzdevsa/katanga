@@ -126,7 +126,7 @@ export function ServicesMenu({
           alignItems="center"
           spacing={1}
         >
-          <Grid item xs={3}>
+          <Grid item>
             <CardContent
               sx={{
                 paddingTop: 3,
@@ -153,7 +153,7 @@ export function ServicesMenu({
               />
             </CardContent>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item>
             <Tabs
               value={value}
               centered
@@ -216,7 +216,6 @@ export function ServicesMenu({
               ))}
             </Tabs>
           </Grid>
-          <Grid item xs={3} />
         </Grid>
       </Container>
       <Container
