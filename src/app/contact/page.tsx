@@ -5,6 +5,7 @@ import { SocialMedia } from "@/components/SocialMedia";
 import getOrganisationId from "@/lib/getOrganisationId";
 import { getGeometry } from "@/actions/getGeometry";
 import SendEmail from "@/components/SendEmail";
+import { Footer } from "@/components/Footer";
 
 export default async function Contact({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const organizationId = await getOrganisationId(searchParams) as string;
@@ -146,6 +147,7 @@ export default async function Contact({ searchParams }: { searchParams: Promise<
           </Grid>
         </Container>
       </section>
+      <Footer organizationId={organizationId} />
     </>
   );
 }

@@ -31,7 +31,7 @@ export function HeroImage({
                 backgroundRepeat: "no-repeat",
                 height: height ? `${height}px` : "625px",
             }, gradient && {
-                borderBottom: removeBorder ? "none" : "7px solid #d12627",
+                borderBottom: removeBorder ? "none" : "7px solid whitesmoke",
             }]}
         >
             <Grid

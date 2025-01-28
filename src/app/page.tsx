@@ -2,6 +2,7 @@
 
 import { getOrganisation } from "@/actions/getOrganisation";
 import { getServices } from "@/actions/getServices";
+import { Footer } from "@/components/Footer";
 import getOrganisationId from "@/lib/getOrganisationId";
 import About from "@/sections/About";
 import Hero from "@/sections/Hero";
@@ -13,13 +14,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
   const services = await getServices(organizationId);
 
   return (
-    <Container maxWidth="md">
-      {organisation && (
-        <>
-          <Hero organization={organisation}/>
-          <About services={services} organisation={organisation} />
-        </>
-      )}
-    </Container>
+    <>
+      {organisation && (<Hero organization={organisation}/>)}
+      {organisation && (<Container maxWidth="md"><About services={services} organisation={organisation} /></Container>)}
+      <Footer organizationId={organizationId} />
+    </>
   );
 }

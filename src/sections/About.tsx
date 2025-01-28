@@ -43,7 +43,7 @@ export default function About({
               {services?.length > 0 && (
                 <div>
                   <Typography variant="subtitle1" fontWeight="bold" align="left" gutterBottom>
-                    Services Provided
+                    What We Offer
                   </Typography>
                   {services?.map((service) => (
                     <Typography key={service.serviceId} variant="subtitle1" align="left" gutterBottom textTransform="capitalize">
