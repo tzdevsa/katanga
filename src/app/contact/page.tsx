@@ -5,6 +5,7 @@ import { SocialMedia } from "@/components/SocialMedia";
 import { getGeometry } from "@/actions/getGeometry";
 import SendEmail from "@/components/SendEmail";
 import { headers } from "next/headers";
+import { GetFormattedPhoneNumberString } from "@think-zambia-foundation/utils";
 
 export default async function Contact() {
   const requestHeaders = await headers();
@@ -101,7 +102,7 @@ export default async function Contact() {
                     PHONE
                   </Typography>
                   <Typography textTransform="uppercase" color="primary" fontWeight="bold" variant="body2" align="left" gutterBottom>
-                    {organisation?.contact?.phone1}
+                    {GetFormattedPhoneNumberString({ phone: organisation?.contact?.phone1 })}
                   </Typography>
                 </Container>
               )}
