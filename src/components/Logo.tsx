@@ -2,18 +2,24 @@
 import { Typography } from '@mui/material'
 import React from 'react'
 import { Environment } from "@think-zambia-foundation/api";
+import Image from 'next/image';
 
 export function Logo({organisation}: {organisation?: Environment}) {
-    /*
-        <Image
-            src={logo}
-            width={127}
-            alt="Umeh Construction — Logo"
-        />
-    */
+    const hasLogo = true;
+    if (!hasLogo) {
+        return (
+            <Typography variant="h5" component="a" fontWeight="400" textTransform="capitalize">
+                {organisation?.name ?? "Katanga Trust Academy"}
+            </Typography>
+        )
+    }
     return (
-        <Typography variant='subtitle2' fontWeight="bold" textTransform="uppercase">
-            {organisation?.name ?? "Katanga School"}
-        </Typography>
+        <Image
+            src="https://chastenzm.com/static/media/CEC_Logo.cae3c6b6.png"
+            alt="CEC Logo"
+            width={215}  // Set desired width
+            height={75} // Set desired height
+            priority // Ensures faster loading
+        />
     )
 }

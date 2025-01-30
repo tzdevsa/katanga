@@ -30,7 +30,7 @@ export default function About({
                   sx={{
                     display: { xs: 'none', md: 'block' }, // Larger screens only
                   }}
-                  variant="h4"
+                  variant="body2"
                   component="h6"
                   fontWeight="bold"
                   align="left"
@@ -51,7 +51,7 @@ export default function About({
                   ABOUT<ArrowRightIcon color="primary" />
                 </Typography>
               </Link>
-              <Typography variant="h6" align="left" fontWeight="500" gutterBottom>
+              <Typography variant="h5" align="left" fontWeight="300" gutterBottom>
                 Welcome to {organisation?.name}, where we nurture academic excellence and moral integrity. Guided by Christian principles, we offer an all-embracing education that inspires our students to excel and become morally responsible citizens.
               </Typography>
             </CardContent>
@@ -63,7 +63,7 @@ export default function About({
                   sx={{
                     display: { xs: 'none', md: 'block' }, // Larger screens only
                   }}
-                  variant="h4"
+                  variant="body2"
                   component="h6"
                   fontWeight="bold"
                   align="left"

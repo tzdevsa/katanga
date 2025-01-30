@@ -4,24 +4,24 @@
 import { autocompleteClasses, Box, Typography, useMediaQuery } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
-import { Montserrat } from 'next/font/google';
+import { Montserrat, Roboto } from 'next/font/google';
 
 const montserrat = Montserrat({
-    weight: ['300', '400', '500', '700'],
-    subsets: ['latin'],
-    display: 'swap',
+  weight: 'variable',
 });
+
+const roboto = Roboto({
+  weight: ["100", "300", "400", "500", "700", "900"]
+})
 
 
 const common = {
   spacing: 8,
   typography: {
     fontFamily: [
+      roboto.style.fontFamily,
       montserrat.style.fontFamily,
     ].join(','),
-  },
-  commonWrapper: {
-    square: false,
   },
   components: {
     MuiSvgIcon: {
@@ -130,12 +130,11 @@ const common = {
 };
 
 export const theme = createTheme({
-  ...common,
   palette: {
     primary: {
-      main: '#121b2a',
-      dark: '#121b2a',
-      light: '#121b2a',
+      main: '#ab0520',
+      dark: '#ab0520',
+      light: '#ab0520',
       contrastText: '#f9f9f9',
     },
     secondary: {

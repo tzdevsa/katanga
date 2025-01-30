@@ -17,7 +17,9 @@ export function Footer({ organisation, services }: FooterProps) {
       component="footer"
       sx={{
         backgroundColor: "background.paper",
-        color: "text.primary"
+        color: "text.primary",
+        position: "relative",
+        bottom: 0
       }}
     >
       <section>
