@@ -3,19 +3,22 @@ import Link from "next/link"
 import { Logo } from "./Logo"
 import React from "react"
 import ArrowRightRoundedIcon from '@mui/icons-material/ArrowRightRounded';
+import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
+import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
+import { Environment } from "@think-zambia-foundation/api";
 
-export function MobileHeader() {
+export function MobileHeader({organisation}: {organisation?: Environment}) {
   return (
     <Box 
       component="nav"
       sx={{ display: { xs: 'block', sm: 'none' } }}
     >
-      Mobile Header
+      {organisation?.name}
     </Box>
   )
 }
 
-export function DesktopHeader() {
+export function DesktopHeader({organisation}: {organisation?: Environment}) {
   return (
     <Box 
       component="nav"
@@ -24,7 +27,26 @@ export function DesktopHeader() {
       }}
     >
       <AppBar position="static" elevation={0}>
-        <Toolbar variant="dense"/>
+        <Toolbar variant="dense">
+          <Container>
+            <Grid
+              container
+              direction="row"
+              spacing={2}
+              justifyContent="flex-end"
+              alignItems="center"
+            >
+              <Grid item>
+                {organisation?.contact?.phone1 && (<Button href="tel:+260 99 9999999" color="inherit" startIcon={<PhoneRoundedIcon fontSize="small" color="inherit" />}>
+                  <Typography variant="caption" fontWeight="600">{organisation?.contact?.phone1}</Typography>
+                </Button>)}
+                {organisation?.contact?.email && (<Button href="mailto:support@thinkzambia.org" color="inherit" startIcon={<MailOutlineRoundedIcon fontSize="small" />}>
+                  <Typography variant="caption" fontWeight="600" textTransform="lowercase">{organisation?.contact?.email}</Typography>
+                </Button>)}
+              </Grid>
+            </Grid>
+          </Container>
+        </Toolbar>
       </AppBar>
       <Container maxWidth="lg">
         <Toolbar>
@@ -40,16 +62,17 @@ export function DesktopHeader() {
           >
             <Grid item>
               <Link href="/">
-                <Logo />
+                <Logo organisation={organisation}/>
               </Link>
             </Grid>
             <Grid item>
-              <Link href="https://katanga.workspacezm.com/" target="_blank">
+              <Link href="https://katanga.workspacezm.com/welcome" target="_blank">
                 <Button 
                   variant="outlined"
                   sx={{ borderRadius: 0, pt: 1.1, pb: 1, pl: 7, pr: 7 }}
+                  endIcon={<ArrowRightRoundedIcon fontSize="small"/>}
                 >
-                  <Typography variant="body2" fontWeight="400">LOGIN<ArrowRightRoundedIcon fontSize="small"/></Typography>
+                  <Typography variant="body2" fontWeight="400">LOGIN</Typography>
                 </Button>
               </Link>
               <Link href="/apply">
@@ -79,7 +102,7 @@ export function DesktopHeader() {
               <React.Fragment key={item.key} >
                 <Grid item>
                   <Link href={item.href}>
-                    <Typography textTransform="capitalize" component="h6" variant="button" fontWeight="400">
+                    <Typography textTransform="capitalize" component="h6" variant="button">
                       {item.text.toLowerCase()}<ArrowRightRoundedIcon color="primary" fontSize="small" />
                     </Typography>
                   </Link>
@@ -101,7 +124,7 @@ export const menu = [
   },
   {
     key: '2',
-    text: 'About',
+    text: 'About Us',
     href: '/about',
   },
   {
@@ -116,11 +139,11 @@ export const menu = [
   },
 ];
 
-export function Header() {
+export function Header({organisation}: {organisation?: Environment}) {
   return (
     <>
-      <MobileHeader />
-      <DesktopHeader />
+      <MobileHeader organisation={organisation}/>
+      <DesktopHeader organisation={organisation}/>
     </>
   )
 }

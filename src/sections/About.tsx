@@ -27,32 +27,16 @@ export default function About({
             <CardContent>
               <Link href="/about">
                 <Typography
-                  sx={{
-                    display: { xs: 'none', md: 'block' }, // Larger screens only
-                  }}
-                  variant="body2"
+                  variant="button"
                   component="h6"
-                  fontWeight="bold"
                   align="left"
                   gutterBottom
-                  textTransform="uppercase">
-                  ABOUT<ArrowRightIcon color="primary" />
-                </Typography>
-                <Typography
-                  sx={{
-                    display: { xs: 'block', md: 'none' }, // Mobile only
-                  }}
-                  variant="h6"
-                  component="h6"
-                  fontWeight="bold"
-                  align="left"
-                  gutterBottom
-                  textTransform="uppercase">
-                  ABOUT<ArrowRightIcon color="primary" />
+                  textTransform="capitalize">
+                  About Us<ArrowRightIcon color="primary" />
                 </Typography>
               </Link>
-              <Typography variant="h5" align="left" fontWeight="300" gutterBottom>
-                Welcome to {organisation?.name}, where we nurture academic excellence and moral integrity. Guided by Christian principles, we offer an all-embracing education that inspires our students to excel and become morally responsible citizens.
+              <Typography variant="h5" align="left">
+                {organisation?.about ?? `Welcome to ${organisation?.name}, where we nurture academic excellence and moral integrity. Guided by Christian principles, we offer an all-embracing education that inspires our students to excel and become morally responsible citizens.`}
               </Typography>
             </CardContent>
           </Grid>
@@ -60,28 +44,11 @@ export default function About({
             <CardContent>
               <Link href="/services">
                 <Typography
-                  sx={{
-                    display: { xs: 'none', md: 'block' }, // Larger screens only
-                  }}
-                  variant="body2"
+                  variant="button"
                   component="h6"
-                  fontWeight="bold"
                   align="left"
-                  gutterBottom
-                  textTransform="uppercase">
-                  WHAT WE OFFER<ArrowRightIcon color="primary" />
-                </Typography>
-                <Typography
-                  sx={{
-                    display: { xs: 'block', md: 'none' }, // Mobile only
-                  }}
-                  variant="h6"
-                  component="h6"
-                  fontWeight="bold"
-                  align="left"
-                  gutterBottom
-                  textTransform="uppercase">
-                  WHAT WE OFFER<ArrowRightIcon color="primary" />
+                  textTransform="capitalize">
+                  What We Offer<ArrowRightIcon color="primary" />
                 </Typography>
               </Link>
             </CardContent>

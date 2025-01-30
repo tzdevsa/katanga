@@ -47,7 +47,7 @@ export function HeroImage({
                     }]}
                 >
                     <Grid item>
-                        <Container maxWidth="xs">
+                        <Container maxWidth="sm">
                             <CardContent>
                                 <Typography
                                     sx={{
@@ -83,9 +83,8 @@ export function HeroImage({
                                     sx={{
                                         display: { xs: 'none', md: 'block' }, // Larger screens only
                                     }}
-                                    variant="h6"
+                                    variant="h5"
                                     color="whitesmoke"
-                                    fontWeight="300"
                                     textAlign={
                                         centerText ? "center" : "inherit"
                                     }>
@@ -95,9 +94,8 @@ export function HeroImage({
                                     sx={{
                                         display: { xs: 'block', md: 'none' }, // Mobile only
                                     }}
-                                    variant="h6"
+                                    variant="h5"
                                     color="whitesmoke"
-                                    fontWeight="300"
                                     textAlign={
                                         centerText ? "center" : "inherit"
                                     }>

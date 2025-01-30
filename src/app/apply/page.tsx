@@ -2,15 +2,12 @@ import { getOrganisation } from "@/actions/getOrganisation";
 import { Container, Grid, Typography } from "@mui/material";
 import getOrganisationId from "@/lib/getOrganisationId";
 import StudentApplication from "@/components/StudentApplication";
-import { Footer } from "@/components/Footer";
 import { HeroImage } from "@/components/HeroImage";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { getServices } from "@/actions/getServices";
 
 export default async function Apply({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const organisationId = await getOrganisationId(searchParams) as string;
   const organisation = await getOrganisation(organisationId)
-  const services = await getServices(organisationId)
 
   return (
     <>
@@ -66,7 +63,6 @@ export default async function Apply({ searchParams }: { searchParams: Promise<{ 
           </Grid>
         </Container>
       </section>
-      <Footer organisation={organisation} services={services} />
     </>
   );
 }

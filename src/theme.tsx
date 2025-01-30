@@ -4,7 +4,7 @@
 import { autocompleteClasses, Box, Typography, useMediaQuery } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
-import { Montserrat, Roboto } from 'next/font/google';
+import { Montserrat, Roboto, Noto_Sans } from 'next/font/google';
 
 const montserrat = Montserrat({
   weight: 'variable',
@@ -16,11 +16,23 @@ const roboto = Roboto({
   subsets: ["latin"]
 })
 
+const noto = Noto_Sans({
+  weight: "variable",
+  subsets: ["latin"]
+})
+
 
 const common = {
   spacing: 8,
   typography: {
     fontFamily: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "Segoe UI",
+      "Open Sans", 
+      "Helvetica Neue", 
+      "sans-serif",
+      noto.style.fontFamily,
       roboto.style.fontFamily,
       montserrat.style.fontFamily,
     ].join(','),
@@ -137,7 +149,7 @@ export const theme = createTheme({
       main: '#ab0520',
       dark: '#ab0520',
       light: '#ab0520',
-      contrastText: '#f9f9f9',
+      contrastText: 'whitesmoke',
     },
     secondary: {
       main: '#C7A567',

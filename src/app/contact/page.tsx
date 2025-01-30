@@ -5,13 +5,10 @@ import { SocialMedia } from "@/components/SocialMedia";
 import getOrganisationId from "@/lib/getOrganisationId";
 import { getGeometry } from "@/actions/getGeometry";
 import SendEmail from "@/components/SendEmail";
-import { Footer } from "@/components/Footer";
-import { getServices } from "@/actions/getServices";
 
 export default async function Contact({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const organisationId = await getOrganisationId(searchParams) as string;
   const organisation = await getOrganisation(organisationId)
-  const services = await getServices(organisationId)
   const geometry = await getGeometry()
 
   return (
@@ -148,7 +145,6 @@ export default async function Contact({ searchParams }: { searchParams: Promise<
           </Grid>
         </Container>
       </section>
-      <Footer organisation={organisation} services={services} />
     </>
   );
 }
