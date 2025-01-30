@@ -1,61 +1,45 @@
-import { HeroImage } from '@/components/HeroImage';
 import { getStaffById } from '@/actions/getStaffById';
 import { Box, Card, CardContent, Container, Divider, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import { headers } from 'next/headers';
 
-type Params = Promise<{ staffId: string, organisationId: string }>;
+type Params = Promise<{ staffId: string}>;
 
 export default async function TeamMember({
   params,
 }: {
   params: Params;
 }) {
-  const { staffId, organisationId } = await params;
-  const staff = await getStaffById(staffId, organisationId)
+  const { staffId } = await params;
+  const requestHeaders = await headers();
+  const organisationId = requestHeaders.get("x-organisation-id");
 
-  const position = staff?.positions[0]?.job?.description;
-
-  /*
-  if (!staff) {
-    return (
-      <main className="flex min-h-screen flex-col items-center justify-between">
-        <div className="flex min-h-screen flex-col items-center justify-center">
-          <h2 className="text-6xl font-bold text-center p-7">
-            Staff not found
-          </h2>
-        </div>
-      </main>
-    );
+  let staff = null;
+  if (organisationId && staffId) {
+    staff = await getStaffById(staffId, organisationId)
   }
-    */
-
+  
+  const position = staff?.positions[0]?.job?.description;
   return (
     <>
-      <HeroImage
-        header="LEADERSHIP"
-        height={375}
-        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      />
       <main>
         <Box sx={{
           display: { xs: 'none', md: 'block' }, // Larger screens only
         }}>
-          <section>
-            <Container maxWidth="lg">
-              <Link href={`/about`}>
-                <Typography
-                  variant='body2'
-                  textTransform="uppercase"
-                  fontWeight="bold"
-                >
-                  Back to About<ArrowRightIcon color="primary" />
-                </Typography>
-              </Link>
-            </Container>
-          </section>
+          <Container maxWidth="lg">
+            <Link href={`/about`}>
+              <Typography
+                variant='body2'
+                textTransform="uppercase"
+                fontWeight="bold"
+              >
+                Back to About<ArrowRightIcon color="primary" />
+              </Typography>
+            </Link>
+          </Container>
         </Box>
         <section id="team">
           <Container sx={{

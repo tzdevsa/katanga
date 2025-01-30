@@ -1,22 +1,20 @@
 import { getOrganisation } from "@/actions/getOrganisation";
 import { Container, Grid, Typography } from "@mui/material";
-import getOrganisationId from "@/lib/getOrganisationId";
 import StudentApplication from "@/components/StudentApplication";
-import { HeroImage } from "@/components/HeroImage";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { headers } from "next/headers";
 
-export default async function Apply({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  const organisationId = await getOrganisationId(searchParams) as string;
-  const organisation = await getOrganisation(organisationId)
+export default async function Apply() {
+  const requestHeaders = await headers();
+  const organisationId = requestHeaders.get("x-organisation-id");
+
+  let organisation = null;  
+  if (organisationId) {
+    organisation = await getOrganisation(organisationId);
+  }
 
   return (
     <>
-      <HeroImage
-        header="ADMISSIONS"
-        // subHeader="Explore Our Journey"
-        height={375}
-        src="https://plus.unsplash.com/premium_photo-1670682102928-fc9050f95f26?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      />
       <section>
         <Container>
           <Grid

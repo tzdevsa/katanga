@@ -6,7 +6,7 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { Environment, Service } from "@think-zambia-foundation/api";
 
 interface FooterProps {
-  organisation: Environment | null,
+  organisation: Environment,
   services: Service[],
 }
 
@@ -17,8 +17,9 @@ export function Footer({ organisation, services }: FooterProps) {
       sx={{
         backgroundColor: "background.paper",
         color: "text.primary",
-        position: "relative",
-        bottom: 0
+        position: "absolute",
+        width: "100vw",
+        mt: "6rem"
       }}
     >
       <section>
@@ -35,7 +36,7 @@ export function Footer({ organisation, services }: FooterProps) {
                   {organisation?.name}<ArrowRightIcon color="primary" />
                 </Typography>
                 <Typography variant='body2' align='left' color='textSecondary'>
-                  Pre-School, Primary School & Secondary School
+                  {organisation?.motto}
                 </Typography>
               </CardContent>
               <CardContent>
@@ -43,7 +44,7 @@ export function Footer({ organisation, services }: FooterProps) {
                   About Us<ArrowRightIcon color="primary" />
                 </Typography>
                 <Typography variant='body2' align='left' color='textSecondary'>
-                  Welcome to {organisation?.name}, where learning meets inspiration! Our mission is to nurture curious minds and empower students to achieve their full potential. 
+                  {organisation?.about}
                 </Typography>
               </CardContent>
               <CardContent>

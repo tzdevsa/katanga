@@ -37,10 +37,10 @@ export function DesktopHeader({organisation}: {organisation?: Environment}) {
               alignItems="center"
             >
               <Grid item>
-                {organisation?.contact?.phone1 && (<Button href="tel:+260 99 9999999" color="inherit" startIcon={<PhoneRoundedIcon fontSize="small" color="inherit" />}>
+                {organisation?.contact?.phone1 && (<Button href={`tel:${organisation?.contact?.phone1}`} color="inherit" startIcon={<PhoneRoundedIcon fontSize="small" color="inherit" />}>
                   <Typography variant="caption" fontWeight="600">{organisation?.contact?.phone1}</Typography>
                 </Button>)}
-                {organisation?.contact?.email && (<Button href="mailto:support@thinkzambia.org" color="inherit" startIcon={<MailOutlineRoundedIcon fontSize="small" />}>
+                {organisation?.contact?.email && (<Button href={`mailto:${organisation?.contact?.email}`} color="inherit" startIcon={<MailOutlineRoundedIcon fontSize="small" />}>
                   <Typography variant="caption" fontWeight="600" textTransform="lowercase">{organisation?.contact?.email}</Typography>
                 </Button>)}
               </Grid>

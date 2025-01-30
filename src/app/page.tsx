@@ -4,6 +4,7 @@ import { getOrganisation } from "@/actions/getOrganisation";
 import { getServices } from "@/actions/getServices";
 import About from "@/sections/About";
 import Hero from "@/sections/Hero";
+import Services from "@/sections/Services";
 import { headers } from "next/headers";
 
 export default async function Home() {
@@ -20,7 +21,8 @@ export default async function Home() {
   return (
     <>
       {organisation && (<Hero organisation={organisation}/>)}
-      {organisation && services && (<About services={services} organisation={organisation} />)}
+      {organisation && services && (<About organisation={organisation} />)}
+      {services && services?.length > 0 && (<Services services={services ?? []} />)}
     </>
   );
 }

@@ -2,13 +2,18 @@ import { getOrganisation } from "@/actions/getOrganisation";
 import { formatAddressCityPostalCodeProvince } from "@/lib/formatAddress";
 import { Container, Grid, Typography } from "@mui/material";
 import { SocialMedia } from "@/components/SocialMedia";
-import getOrganisationId from "@/lib/getOrganisationId";
 import { getGeometry } from "@/actions/getGeometry";
 import SendEmail from "@/components/SendEmail";
+import { headers } from "next/headers";
 
-export default async function Contact({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  const organisationId = await getOrganisationId(searchParams) as string;
-  const organisation = await getOrganisation(organisationId)
+export default async function Contact() {
+  const requestHeaders = await headers();
+  const organisationId = requestHeaders.get("x-organisation-id");
+    
+  let organisation = null;
+  if (organisationId) {
+    organisation = await getOrganisation(organisationId);
+  }
   const geometry = await getGeometry()
 
   return (
