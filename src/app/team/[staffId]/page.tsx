@@ -22,7 +22,7 @@ export default async function TeamMember({
     staff = await getStaffById(staffId, organisationId)
   }
   
-  const position = staff?.positions[0]?.job?.description;
+  const position = staff?.positions[0]?.job?.title;
   return (
     <>
       <main>
