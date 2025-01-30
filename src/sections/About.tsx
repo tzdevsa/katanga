@@ -20,7 +20,7 @@ export default function About({ organisation }: { organisation: Environment }) {
               <Link href="/about">
                 <Typography
                   variant="button"
-                  component="h6"
+                  component="button"
                   align="left"
                   gutterBottom
                   textTransform="capitalize">

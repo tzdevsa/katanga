@@ -1,6 +1,7 @@
 import { getOrganisation } from "@/actions/getOrganisation";
 import { getStaff } from "@/actions/getStaff";
 import About from "@/sections/About";
+import Motto from "@/sections/Motto";
 import Team from "@/sections/Team";
 import { headers } from "next/headers";
 
@@ -18,6 +19,7 @@ export default async function AboutPage() {
 
   return (
     <>
+      {organisation?.motto && (<Motto organisation={organisation} />)}
       {organisation && (<About organisation={organisation} />)}
       {staff && (<Team staff={staff} />)}
     </>
