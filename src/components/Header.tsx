@@ -103,7 +103,12 @@ export function DesktopHeader({organisation}: {organisation?: Environment}) {
               <React.Fragment key={item.key} >
                 <Grid item>
                   <Link href={item.href}>
-                    <Typography textTransform="capitalize" component="h6" variant="button">
+                    <Typography textTransform="capitalize" component="h6" variant="button" sx={{
+                      transition: "color 0.3s ease-in-out",
+                      "&:hover": {
+                        color: "primary.main",
+                      },
+                    }}>
                       {item.text.toLowerCase()}<ArrowRightRoundedIcon color="primary" fontSize="small" />
                     </Typography>
                   </Link>

@@ -21,7 +21,7 @@ export default async function Home() {
   return (
     <>
       {organisation && (<Hero organisation={organisation}/>)}
-      {organisation && services && (<About organisation={organisation} />)}
+      {organisation && services && (<About organisation={organisation} href="/about" />)}
       {services && services?.length > 0 && (<Services services={services ?? []} />)}
     </>
   );
