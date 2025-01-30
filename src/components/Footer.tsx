@@ -34,7 +34,7 @@ export function Footer({ organisation, services }: FooterProps) {
             <Grid item xs={12} sm={6}>
               <CardContent>
                 <Typography variant='button' component="h1" align='left' textTransform="capitalize" gutterBottom>
-                  {organisation?.name}<ArrowRightIcon color="primary" />
+                  {organisation?.name}<ArrowRightIcon fontSize="small" color="primary" />
                 </Typography>
                 {organisation.motto && (<Typography variant='body2' align='left' color='textSecondary'>
                   {organisation?.motto}
@@ -43,7 +43,7 @@ export function Footer({ organisation, services }: FooterProps) {
               {organisation?.about && (
                 <CardContent>
                   <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
-                    About Us<ArrowRightIcon color="primary" />
+                    About Us<ArrowRightIcon fontSize="small" color="primary" />
                   </Typography>
                   <Typography variant='body2' align='left' color='textSecondary'>
                     {organisation?.about}
@@ -60,7 +60,7 @@ export function Footer({ organisation, services }: FooterProps) {
               <Grid item xs={12} sm={3}>
                 <CardContent>
                   <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
-                    What We Offer<ArrowRightIcon color="primary" />
+                    What We Offer<ArrowRightIcon fontSize="small" color="primary" />
                   </Typography>
                   {services?.map((service) => (
                     <Typography key={service.serviceId} variant="body2" align="left" textTransform="capitalize" color='textSecondary'>
@@ -73,7 +73,7 @@ export function Footer({ organisation, services }: FooterProps) {
             <Grid item xs={12} sm={3}>
               <CardContent>
                 <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
-                  Administration<ArrowRightIcon color="primary" />
+                  Administration<ArrowRightIcon fontSize="small" color="primary" />
                 </Typography>
                 {organisation?.address?.addressLine1 && (<Typography variant='body2' align='left' color='textSecondary'>{organisation?.address?.addressLine1}</Typography>)}
                 {organisation?.address?.addressLine2 && (<Typography variant='body2' align='left' color='textSecondary'>{organisation?.address?.addressLine2}</Typography>)}
@@ -82,7 +82,7 @@ export function Footer({ organisation, services }: FooterProps) {
               </CardContent>
               <CardContent>
                 <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
-                  Support<ArrowRightIcon color="primary" />
+                  Support<ArrowRightIcon fontSize="small" color="primary" />
                 </Typography>
                 {organisation?.contact?.email && (
                   <Link href={`mailto:${organisation?.contact?.email}`}>

@@ -36,7 +36,7 @@ export default async function TeamMember({
                 textTransform="uppercase"
                 fontWeight="bold"
               >
-                Back to About<ArrowRightIcon color="primary" />
+                Back to About<ArrowRightIcon fontSize="small" color="primary" />
               </Typography>
             </Link>
           </Container>
@@ -52,7 +52,7 @@ export default async function TeamMember({
                 textTransform="capitalize"
                 fontWeight="500"
               >
-                Back to About<ArrowRightIcon color="primary" />
+                Back to About<ArrowRightIcon fontSize="small" color="primary" />
               </Typography>
             </Link>
           </Container>

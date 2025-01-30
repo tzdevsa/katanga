@@ -21,7 +21,7 @@ export default async function Team({ staff }: { staff: Staff[] }) {
               align="left"
               gutterBottom
               textTransform="capitalize">
-              Meet The Team<ArrowRightIcon color="primary" />
+              Meet The Team<ArrowRightIcon fontSize="small" color="primary" />
             </Typography>
           </Link>
         </CardContent>

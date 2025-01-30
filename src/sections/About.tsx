@@ -24,7 +24,7 @@ export default function About({ organisation }: { organisation: Environment }) {
                   align="left"
                   gutterBottom
                   textTransform="capitalize">
-                  About Us<ArrowRightIcon color="primary" />
+                  About Us<ArrowRightIcon fontSize="small" color="primary" />
                 </Typography>
               </Link>
               <Typography variant="h5" align="left">

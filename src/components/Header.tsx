@@ -6,6 +6,7 @@ import ArrowRightRoundedIcon from '@mui/icons-material/ArrowRightRounded';
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import { Environment } from "@think-zambia-foundation/api";
+import { GetFormattedPhoneNumberString } from "@think-zambia-foundation/utils";
 
 export function MobileHeader({organisation}: {organisation?: Environment}) {
   return (
@@ -38,7 +39,7 @@ export function DesktopHeader({organisation}: {organisation?: Environment}) {
             >
               <Grid item>
                 {organisation?.contact?.phone1 && (<Button href={`tel:${organisation?.contact?.phone1}`} color="inherit" startIcon={<PhoneRoundedIcon fontSize="small" color="inherit" />}>
-                  <Typography variant="caption" fontWeight="600">{organisation?.contact?.phone1}</Typography>
+                  <Typography variant="caption" fontWeight="600">{GetFormattedPhoneNumberString({phone: organisation?.contact?.phone1})}</Typography>
                 </Button>)}
                 {organisation?.contact?.email && (<Button href={`mailto:${organisation?.contact?.email}`} color="inherit" startIcon={<MailOutlineRoundedIcon fontSize="small" />}>
                   <Typography variant="caption" fontWeight="600" textTransform="lowercase">{organisation?.contact?.email}</Typography>

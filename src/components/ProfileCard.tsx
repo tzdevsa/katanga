@@ -47,7 +47,7 @@ export default function ProfileCard({ staff }: { staff: Staff }) {
           <Grid item xs={12}>
             <CardContent>
               <Typography variant="h6" color="white" textTransform="uppercase" fontWeight="bold">
-                {staff?.profile?.firstName ?? ""} {staff?.profile?.lastName ?? ""}<ArrowRightIcon color="primary" />
+                {staff?.profile?.firstName ?? ""} {staff?.profile?.lastName ?? ""}<ArrowRightIcon fontSize="small" color="primary" />
               </Typography>
               <Typography variant="body2" color="whitesmoke" textTransform="uppercase">
                 {position}

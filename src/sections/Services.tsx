@@ -29,7 +29,7 @@ export default function Services({
                   component="h6"
                   align="left"
                   textTransform="capitalize">
-                  What We Offer<ArrowRightIcon color="primary" />
+                  What We Offer<ArrowRightIcon fontSize="small" color="primary" />
                 </Typography>
               </Link>
             </CardContent>

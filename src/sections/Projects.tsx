@@ -20,7 +20,7 @@ export default async function Projects({organisation} : {organisation: Environme
             fontWeight="bold"
             align="left"
             gutterBottom>
-            RESIDENTIAL<ArrowRightIcon color="primary" />
+            RESIDENTIAL<ArrowRightIcon fontSize="small" color="primary" />
           </Typography>
           <Typography
             sx={{
@@ -30,7 +30,7 @@ export default async function Projects({organisation} : {organisation: Environme
             fontWeight="bold"
             align="left"
             gutterBottom>
-            RESIDENTIAL<ArrowRightIcon color="primary" />
+            RESIDENTIAL<ArrowRightIcon fontSize="small" color="primary" />
           </Typography>
         </Link>
       </Container>
