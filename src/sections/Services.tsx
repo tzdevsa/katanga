@@ -10,6 +10,7 @@ export default function Services({
   services: Service[] 
 }) {
 
+  if (!services || services?.length === 0) return <></>
   return (
     <section>
       <Container id="about" maxWidth="lg">

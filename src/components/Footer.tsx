@@ -35,36 +35,40 @@ export function Footer({ organisation, services }: FooterProps) {
                 <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
                   {organisation?.name}<ArrowRightIcon color="primary" />
                 </Typography>
-                <Typography variant='body2' align='left' color='textSecondary'>
+                {organisation.motto && (<Typography variant='body2' align='left' color='textSecondary'>
                   {organisation?.motto}
-                </Typography>
+                </Typography>)}
               </CardContent>
-              <CardContent>
-                <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
-                  About Us<ArrowRightIcon color="primary" />
-                </Typography>
-                <Typography variant='body2' align='left' color='textSecondary'>
-                  {organisation?.about}
-                </Typography>
-              </CardContent>
+              {organisation?.about && (
+                <CardContent>
+                  <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
+                    About Us<ArrowRightIcon color="primary" />
+                  </Typography>
+                  <Typography variant='body2' align='left' color='textSecondary'>
+                    {organisation?.about}
+                  </Typography>
+                </CardContent>
+              )}
               <CardContent>
                 <Typography variant='body2' align='left' textTransform="capitalize" color='textSecondary'>
                   © {new Date().getFullYear()} {organisation?.name}
                 </Typography>
               </CardContent>
             </Grid>
-            <Grid item xs={12} sm={3}>
-              <CardContent>
-                <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
-                  What We Offer<ArrowRightIcon color="primary" />
-                </Typography>
-                {services?.map((service) => (
-                  <Typography key={service.serviceId} variant="body2" align="left" textTransform="capitalize" color='textSecondary'>
-                    <ArrowRightIcon color="disabled" />{service.name}
+            {services && services.length > 0 && (
+              <Grid item xs={12} sm={3}>
+                <CardContent>
+                  <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
+                    What We Offer<ArrowRightIcon color="primary" />
                   </Typography>
-                ))}
-              </CardContent>
-            </Grid>
+                  {services?.map((service) => (
+                    <Typography key={service.serviceId} variant="body2" align="left" textTransform="capitalize" color='textSecondary'>
+                      <ArrowRightIcon color="disabled" />{service.name}
+                    </Typography>
+                  ))}
+                </CardContent>
+              </Grid>
+            )}
             <Grid item xs={12} sm={3}>
               <CardContent>
                 <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
@@ -96,7 +100,7 @@ export function Footer({ organisation, services }: FooterProps) {
             </Grid>
             <Grid item xs={12}>
               <Typography variant='body2' align='center'>
-                Powered by <a href='https://katanga.workspacezm.com/' target='_blank'>Katanga</a>
+                Powered by <Typography component="a" variant="body2" color="primary" href='https://katanga.workspacezm.com/' target='_blank'>Katanga</Typography>
               </Typography>
             </Grid>
           </Grid>

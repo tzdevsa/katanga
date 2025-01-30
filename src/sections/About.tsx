@@ -4,6 +4,7 @@ import { Environment } from "@think-zambia-foundation/api";
 import Link from "next/link";
 
 export default function About({ organisation }: { organisation: Environment }) {
+  if (!organisation?.about) return <></>
   return (
     <section>
       <Container id="about" maxWidth="lg">
@@ -14,25 +15,23 @@ export default function About({ organisation }: { organisation: Environment }) {
           alignItems="flex-start"
           spacing={2}
         >
-          {organisation?.about && (
-            <Grid item xs={12}>
-              <CardContent>
-                <Link href="/about">
-                  <Typography
-                    variant="button"
-                    component="h6"
-                    align="left"
-                    gutterBottom
-                    textTransform="capitalize">
-                    About Us<ArrowRightIcon color="primary" />
-                  </Typography>
-                </Link>
-                <Typography variant="h5" align="left">
-                  {organisation?.about}
+          <Grid item xs={12}>
+            <CardContent>
+              <Link href="/about">
+                <Typography
+                  variant="button"
+                  component="h6"
+                  align="left"
+                  gutterBottom
+                  textTransform="capitalize">
+                  About Us<ArrowRightIcon color="primary" />
                 </Typography>
-              </CardContent>
-            </Grid>
-          )}
+              </Link>
+              <Typography variant="h5" align="left">
+                {organisation?.about}
+              </Typography>
+            </CardContent>
+          </Grid>
         </Grid>
       </Container>
     </section>
