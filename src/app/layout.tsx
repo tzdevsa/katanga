@@ -27,29 +27,29 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
-    title: organisation ? `${organisation?.name} | School Website` : 'Katanga | School Website',
-    description: 'This is a description of my awesome website for better SEO.',
+    title: `${organisation?.name} | school website`,
+    description: `${organisation?.about}`,
     keywords: ['nextjs', 'seo', 'metadata', 'web development'],
     authors: {
-      name: "Workspace Innovations Zambia"
+      name: "Workspace Innovations Zambia",
     },
     openGraph: {
-      title: 'Katanga | School Website',
-      description: 'This is a description of my awesome website for better SEO.',
+      title: `${organisation?.name} | School Website`,
+      description: `${organisation?.about}`,
       url: 'https://example.com',
       images: [
         {
-          url: 'https://example.com/image.png',
-          width: 800,
-          height: 600,
+          url: `${organisation?.image?.src}`,
+          width: 215,
+          height: 75,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Katanga | School Website',
-      description: 'This is a description of my awesome website for better SEO.',
-      images: ['https://example.com/image.png'],
+      title: `${organisation?.name} | School Website`,
+      description: `${organisation?.about}`,
+      images: [`${organisation?.image?.src}`],
     },
   };
 }
