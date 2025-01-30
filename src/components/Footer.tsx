@@ -4,6 +4,7 @@ import { SocialMedia } from './SocialMedia';
 import { formatAddressCityPostalCodeProvince } from '@/lib/formatAddress';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { Environment, Service } from "@think-zambia-foundation/api";
+import Link from 'next/link';
 
 interface FooterProps {
   organisation: Environment,
@@ -83,9 +84,13 @@ export function Footer({ organisation, services }: FooterProps) {
                 <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
                   Support<ArrowRightIcon color="primary" />
                 </Typography>
-                <Typography variant='body2' align='left' color='textSecondary'>
-                  {organisation?.contact?.email}
-                </Typography>
+                {organisation?.contact?.email && (
+                  <Link href={`mailto:${organisation?.contact?.email}`}>
+                    <Typography variant='body2' align='left' color='textSecondary'>
+                      {organisation?.contact?.email}
+                    </Typography>
+                  </Link>
+                )}
               </CardContent>
               <CardContent>
                 <SocialMedia
