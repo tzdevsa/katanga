@@ -4,7 +4,7 @@ import { createApplication } from '@/actions/createApplication'
 import { Autocomplete, Button, CircularProgress, Grid2, TextField } from '@mui/material'
 import React from 'react'
 
-export default function StudentApplication({ organizationId }: { organizationId: string }) {
+export default function StudentApplication({ organisationId }: { organisationId: string }) {
   const [isLoading, setIsLoading] = React.useState(false)
   const [error, setError] = React.useState<string | null>(null)
 
@@ -215,7 +215,7 @@ export default function StudentApplication({ organizationId }: { organizationId:
               previousSchool,
               province,
               religion: 'Christian',
-              schoolId: organizationId
+              schoolId: organisationId
             }).then((data) => {
               alert(data)
             })

@@ -6,11 +6,14 @@ import getOrganisationId from "@/lib/getOrganisationId";
 import { getGeometry } from "@/actions/getGeometry";
 import SendEmail from "@/components/SendEmail";
 import { Footer } from "@/components/Footer";
+import { getServices } from "@/actions/getServices";
 
 export default async function Contact({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  const organizationId = await getOrganisationId(searchParams) as string;
-  const organisation = await getOrganisation(organizationId)
+  const organisationId = await getOrganisationId(searchParams) as string;
+  const organisation = await getOrganisation(organisationId)
+  const services = await getServices(organisationId)
   const geometry = await getGeometry()
+
   return (
     <>
       <div style={{ position: "relative", width: "100%", height: "375px" }}>
@@ -79,12 +82,10 @@ export default async function Contact({ searchParams }: { searchParams: Promise<
                 >
                   Administration
                 </Typography>
-                <Typography textTransform="uppercase" color="primary" fontWeight="bold" variant="body2" align="left" gutterBottom>
-                  {organisation?.address?.addressLine1 && (<p>{organisation?.address?.addressLine1}</p>)}
-                  {organisation?.address?.addressLine2 && (<p>{organisation?.address?.addressLine2}</p>)}
-                  <p>{formatAddressCityPostalCodeProvince(organisation?.address)}</p>
-                  <p>{organisation?.address?.country}</p>
-                </Typography>
+                {organisation?.address?.addressLine1 && (<Typography textTransform="uppercase" color="primary" fontWeight="bold" variant="body2" align="left">{organisation?.address?.addressLine1}</Typography>)}
+                {organisation?.address?.addressLine2 && (<Typography textTransform="uppercase" color="primary" fontWeight="bold" variant="body2" align="left">{organisation?.address?.addressLine2}</Typography>)}
+                {(organisation?.address?.city || organisation?.address?.postalCode || organisation?.address?.province) && (<Typography textTransform="uppercase" color="primary" fontWeight="bold" variant="body2" align="left">{formatAddressCityPostalCodeProvince(organisation?.address)}</Typography>)}
+                {organisation?.address?.country && (<Typography textTransform="uppercase" color="primary" fontWeight="bold" variant="body2" align="left">{organisation?.address?.country}</Typography>)}
               </Container>
               {organisation?.contact?.phone1 && (
                 <Container sx={{ mt: 4 }}>
@@ -147,7 +148,7 @@ export default async function Contact({ searchParams }: { searchParams: Promise<
           </Grid>
         </Container>
       </section>
-      <Footer organizationId={organizationId} />
+      <Footer organisation={organisation} services={services} />
     </>
   );
 }

@@ -8,15 +8,15 @@ import About from "@/sections/About";
 import Hero from "@/sections/Hero";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  const organizationId = await getOrganisationId(searchParams) as string;
-  const organisation = await getOrganisation(organizationId)
-  const services = await getServices(organizationId);
+  const organisationId = await getOrganisationId(searchParams) as string;
+  const organisation = await getOrganisation(organisationId)
+  const services = await getServices(organisationId);
 
   return (
     <>
-      {organisation && (<Hero organization={organisation}/>)}
+      {organisation && (<Hero organisation={organisation}/>)}
       {organisation && (<About services={services} organisation={organisation} />)}
-      <Footer organizationId={organizationId} />
+      <Footer organisation={organisation} services={services} />
     </>
   );
 }

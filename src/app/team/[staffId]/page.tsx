@@ -6,15 +6,15 @@ import React from 'react';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
-type Params = Promise<{ staffId: string, organizationId: string }>;
+type Params = Promise<{ staffId: string, organisationId: string }>;
 
 export default async function TeamMember({
   params,
 }: {
   params: Params;
 }) {
-  const { staffId, organizationId } = await params;
-  const staff = await getStaffById(staffId, organizationId)
+  const { staffId, organisationId } = await params;
+  const staff = await getStaffById(staffId, organisationId)
 
   const position = staff?.positions[0]?.job?.description;
 
@@ -32,7 +32,6 @@ export default async function TeamMember({
   }
     */
 
-  console.log(staff)
   return (
     <>
       <HeroImage
@@ -46,13 +45,13 @@ export default async function TeamMember({
         }}>
           <section>
             <Container maxWidth="lg">
-              <Link href={`/team`}>
+              <Link href={`/about`}>
                 <Typography
                   variant='body2'
                   textTransform="uppercase"
                   fontWeight="bold"
                 >
-                  Back to Leadership<ArrowRightIcon color="primary" />
+                  Back to About<ArrowRightIcon color="primary" />
                 </Typography>
               </Link>
             </Container>
@@ -69,7 +68,7 @@ export default async function TeamMember({
                 textTransform="capitalize"
                 fontWeight="500"
               >
-                Back to Leadership<ArrowRightIcon color="primary" />
+                Back to About<ArrowRightIcon color="primary" />
               </Typography>
             </Link>
           </Container>
@@ -170,7 +169,7 @@ export default async function TeamMember({
                 <Card
                   elevation={0}
                   sx={{
-                    backgroundColor: "whitesmoke"
+                    backgroundColor: "background.default"
                   }}
                 >
                   <CardContent>

@@ -9,7 +9,7 @@ export function middleware(req: NextRequest) {
   // Rewrite only if there is a valid subdomain
   if (subdomain && subdomain !== 'www' && subdomain !== 'katanga') {
     const url = req.nextUrl.clone();
-    url.searchParams.set('organization-id', subdomain); // Pass subdomain as query parameter
+    url.searchParams.set('organisation-id', subdomain); // Pass subdomain as query parameter
     return NextResponse.rewrite(url); // Rewrite to pass the subdomain
   }
 

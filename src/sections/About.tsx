@@ -12,6 +12,7 @@ export default function About({
   services: Service[] 
   organisation: Environment
 }) {
+
   return (
     <section>
       <Container id="about" maxWidth="lg">

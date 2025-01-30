@@ -1,11 +1,10 @@
- 
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { ThemeProvider } from "@mui/material";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Providers } from "./providers";
-import theme from "@/theme";
+import Theme from "@/theme";
+import { Box } from "@mui/material";
 
 export const metadata:Metadata = {
   title: 'Katanga | School Website',
@@ -38,20 +37,19 @@ export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  
+}>) {  
   return (
     <html lang="en">
-      <body>
+      <Box component="body" sx={{ backgroundColor: "background.default"}}>
         <Providers>
           <AppRouterCacheProvider>
-            <ThemeProvider theme={theme}>
+            <Theme>
               <Header />
               {children}
-            </ThemeProvider>
+            </Theme>
           </AppRouterCacheProvider>
         </Providers>
-      </body>
+      </Box>
     </html>
   );
 }

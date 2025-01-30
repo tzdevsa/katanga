@@ -11,6 +11,7 @@ export const getStaff = async (organisationId: string) => {
         "x-api-key": `${process.env.TZ_API_KEY}`,
       }),
     };
+    
     return await fetch(
       `${process.env.CORE_API}/organisation/${organisationId}/staff`,
       options

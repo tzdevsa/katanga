@@ -181,8 +181,7 @@ export function NavBar({ services }: NavBarProps) {
                         <CardMedia
                           component="img"
                           height="50"
-                          // image={WilocateLogo}
-                          alt="Umeh Construction logo"
+                          alt="Katanga School — logo"
                         />
                       </CardContent>
                     </Link>
@@ -315,12 +314,12 @@ export function Header() {
     <AppBar
       elevation={trigger ? 0 : 0}
       sx={{
-        backgroundColor: trigger ? 'white' : 'transparent',
+        backgroundColor: trigger ? 'background.default' : 'transparent',
       }}
     >
       <ServicesMenu
         services={services}
-        logo={trigger ? "" : ""}
+        // logo={trigger ? "" : ""}
         color={trigger ? 'black' : 'whitesmoke'}
       />
     </AppBar>

@@ -5,10 +5,12 @@ import StudentApplication from "@/components/StudentApplication";
 import { Footer } from "@/components/Footer";
 import { HeroImage } from "@/components/HeroImage";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { getServices } from "@/actions/getServices";
 
 export default async function Apply({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  const organizationId = await getOrganisationId(searchParams) as string;
-  const organisation = await getOrganisation(organizationId)
+  const organisationId = await getOrganisationId(searchParams) as string;
+  const organisation = await getOrganisation(organisationId)
+  const services = await getServices(organisationId)
 
   return (
     <>
@@ -58,13 +60,13 @@ export default async function Apply({ searchParams }: { searchParams: Promise<{ 
             </Grid>
             <Grid item xs={12} sm={7}>
               <Container>
-                {organisation && <StudentApplication organizationId={organisation.envId} />}
+                {organisation && <StudentApplication organisationId={organisation.envId} />}
               </Container>
             </Grid>
           </Grid>
         </Container>
       </section>
-      <Footer organizationId={organizationId} />
+      <Footer organisation={organisation} services={services} />
     </>
   );
 }

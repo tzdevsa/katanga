@@ -5,8 +5,8 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { Environment } from "@think-zambia-foundation/api";
 import ProjectCard from "@/components/ProjectCard";
 
-export default async function Projects({organization} : {organization: Environment}) {
-  const projects = (await getProjects(organization.envId))?.splice(0, 2);
+export default async function Projects({organisation} : {organisation: Environment}) {
+  const projects = (await getProjects(organisation.envId))?.splice(0, 2);
 
   return (
     <section>

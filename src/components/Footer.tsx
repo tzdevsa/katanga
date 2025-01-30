@@ -1,19 +1,23 @@
-import { CardContent, Container, Grid, Typography } from '@mui/material'
+"use client"
+import { Box, CardContent, Container, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { SocialMedia } from './SocialMedia';
-import { getOrganisation } from '@/actions/getOrganisation';
 import { formatAddressCityPostalCodeProvince } from '@/lib/formatAddress';
-import { getServices } from '@/actions/getServices';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { Environment, Service } from "@think-zambia-foundation/api";
 
-export async function Footer({ organizationId }: { organizationId: string }) {
-  const organisation = await getOrganisation(organizationId)
-  const services = await getServices(organizationId);
+interface FooterProps {
+  organisation: Environment | null,
+  services: Service[],
+}
 
+export function Footer({ organisation, services }: FooterProps) {
   return (
-    <footer
-      style={{
-        backgroundColor: "whitesmoke"
+    <Box
+      component="footer"
+      sx={{
+        backgroundColor: "background.paper",
+        color: "text.primary"
       }}
     >
       <section>
@@ -64,12 +68,10 @@ export async function Footer({ organizationId }: { organizationId: string }) {
                 <Typography variant='h6' fontWeight="bold" align='left' textTransform="capitalize">
                   Administration
                 </Typography>
-                <Typography variant='body2' align='left'>
-                  {organisation?.address?.addressLine1 && (<p>{organisation?.address?.addressLine1}</p>)}
-                  {organisation?.address?.addressLine2 && (<p>{organisation?.address?.addressLine2}</p>)}
-                  <p>{formatAddressCityPostalCodeProvince(organisation?.address)}</p>
-                  <p>{organisation?.address?.country}</p>
-                </Typography>
+                {organisation?.address?.addressLine1 && (<Typography variant='body2' align='left'>{organisation?.address?.addressLine1}</Typography>)}
+                {organisation?.address?.addressLine2 && (<Typography variant='body2' align='left'>{organisation?.address?.addressLine2}</Typography>)}
+                {(organisation?.address?.city || organisation?.address?.postalCode || organisation?.address?.province) && (<Typography variant='body2' align='left'>{formatAddressCityPostalCodeProvince(organisation?.address)}</Typography>)}
+                {organisation?.address?.country && (<Typography variant='body2' align='left'>{organisation?.address?.country}</Typography>)}
               </CardContent>
               <CardContent>
                 <Typography variant='h6' fontWeight="bold" align='left' textTransform="capitalize">
@@ -98,6 +100,6 @@ export async function Footer({ organizationId }: { organizationId: string }) {
           </Grid>
         </Container>
       </section>
-    </footer>
+    </Box>
   )
 }

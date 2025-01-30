@@ -17,7 +17,7 @@ export default function Welcome({ organisation }: { organisation: Environment })
       >
         <Grid2 size={12}>
           <Typography variant="h3" textAlign="center">Welcome to {organisation ? organisation.name : 'Default'} School!</Typography>
-          <Typography variant="body1" textAlign="center">Organization ID: {organisation.envId || 'No Subdomain Detected'}</Typography>
+          <Typography variant="body1" textAlign="center">Organisation ID: {organisation.envId || 'No Subdomain Detected'}</Typography>
           <Typography variant="body2" gutterBottom textAlign="center">
             {formatAddressCityPostalCodeProvince(organisation?.address)}
             {organisation?.address?.country ? `, ${organisation.address.country}` : ""}
