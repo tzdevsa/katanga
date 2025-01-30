@@ -3,12 +3,7 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { Environment } from "@think-zambia-foundation/api";
 import Link from "next/link";
 
-export default function About({ 
-  organisation
-}: { 
-  organisation: Environment
-}) {
-
+export default function About({ organisation }: { organisation: Environment }) {
   return (
     <section>
       <Container id="about" maxWidth="lg">
@@ -19,23 +14,25 @@ export default function About({
           alignItems="flex-start"
           spacing={2}
         >
-          <Grid item xs={12}>
-            <CardContent>
-              <Link href="/about">
-                <Typography
-                  variant="button"
-                  component="h6"
-                  align="left"
-                  gutterBottom
-                  textTransform="capitalize">
-                  About Us<ArrowRightIcon color="primary" />
+          {organisation?.about && (
+            <Grid item xs={12}>
+              <CardContent>
+                <Link href="/about">
+                  <Typography
+                    variant="button"
+                    component="h6"
+                    align="left"
+                    gutterBottom
+                    textTransform="capitalize">
+                    About Us<ArrowRightIcon color="primary" />
+                  </Typography>
+                </Link>
+                <Typography variant="h5" align="left">
+                  {organisation?.about}
                 </Typography>
-              </Link>
-              <Typography variant="h5" align="left">
-                {organisation?.about ?? `Welcome to ${organisation?.name}, where we nurture academic excellence and moral integrity. Guided by Christian principles, we offer an all-embracing education that inspires our students to excel and become morally responsible citizens.`}
-              </Typography>
-            </CardContent>
-          </Grid>
+              </CardContent>
+            </Grid>
+          )}
         </Grid>
       </Container>
     </section>
