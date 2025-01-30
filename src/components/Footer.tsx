@@ -33,7 +33,7 @@ export function Footer({ organisation, services }: FooterProps) {
           >
             <Grid item xs={12} sm={6}>
               <CardContent>
-                <Typography variant='button' component="h6" align='left' textTransform="capitalize" gutterBottom>
+                <Typography variant='button' component="h1" align='left' textTransform="capitalize" gutterBottom>
                   {organisation?.name}<ArrowRightIcon color="primary" />
                 </Typography>
                 {organisation.motto && (<Typography variant='body2' align='left' color='textSecondary'>

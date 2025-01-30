@@ -54,6 +54,7 @@ export function HeroImage({
                                         display: { xs: 'none', md: 'block' }, // Larger screens only
                                     }}
                                     variant="h2"
+                                    component="h1"
                                     fontWeight="bold"
                                     color="whitesmoke"
                                     textTransform="uppercase"

@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
-    title: `${organisation?.name} | school website`,
+    title: `${organisation?.name} | School Website`,
     description: `${organisation?.about}`,
     keywords: ['nextjs', 'seo', 'metadata', 'web development'],
     authors: {
