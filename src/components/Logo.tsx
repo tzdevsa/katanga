@@ -9,7 +9,7 @@ export function Logo({organisation}: {organisation?: Environment}) {
             <Image
                 src={organisation.image.src}
                 alt={organisation.image.alt}
-                width={215}
+                width={175}
                 height={75}
                 priority
             />

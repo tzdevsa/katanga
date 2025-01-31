@@ -1,23 +1,13 @@
 import { AppBar, Box, Button, Container, Divider, Grid, Toolbar, Typography } from "@mui/material"
 import Link from "next/link"
-import { Logo } from "./Logo"
+import { Logo } from "../Logo"
 import React from "react"
 import ArrowRightRoundedIcon from '@mui/icons-material/ArrowRightRounded';
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import { Environment } from "@think-zambia-foundation/api";
 import { GetFormattedPhoneNumberString } from "@think-zambia-foundation/utils";
-
-export function MobileHeader({organisation}: {organisation?: Environment}) {
-  return (
-    <Box 
-      component="nav"
-      sx={{ display: { xs: 'block', sm: 'none' } }}
-    >
-      {organisation?.name}
-    </Box>
-  )
-}
+import { menu } from ".";
 
 export function DesktopHeader({organisation}: {organisation?: Environment}) {
   return (
@@ -119,37 +109,5 @@ export function DesktopHeader({organisation}: {organisation?: Environment}) {
         </Toolbar>
       </Container>
     </Box>
-  )
-}
-
-export const menu = [
-  {
-    key: '1',
-    text: 'Home',
-    href: '/',
-  },
-  {
-    key: '2',
-    text: 'About Us',
-    href: '/about',
-  },
-  {
-    key: '3',
-    text: 'Admissions',
-    href: '/apply',
-  },
-  {
-    key: '4',
-    text: 'CONTACT',
-    href: '/contact',
-  },
-];
-
-export function Header({organisation}: {organisation?: Environment}) {
-  return (
-    <>
-      <MobileHeader organisation={organisation}/>
-      <DesktopHeader organisation={organisation}/>
-    </>
   )
 }

@@ -33,7 +33,10 @@ export default function Motto({ organisation }: { organisation: Environment }) {
                   textTransform="capitalize">
                   Our Motto<ArrowRightIcon fontSize="small" color="primary" />
                 </Typography>
-                <Typography variant="h1" align="left">
+                <Typography sx={{ display: { xs: "none", sm: "block" }}} variant="h1" align="left">
+                  {organisation?.motto}
+                </Typography>
+                <Typography sx={{ display: { xs: "block", sm: "none" }}} variant="h3" align="left">
                   {organisation?.motto}
                 </Typography>
               </CardContent>
@@ -44,7 +47,8 @@ export default function Motto({ organisation }: { organisation: Environment }) {
                     size="large"
                     sx={{ borderRadius: 0, p: 2 }}
                   >
-                    <Typography variant="h6" component="button" fontWeight="400">Start Learning Today</Typography>
+                    <Typography sx={{ display: { xs: "none", sm: "block" }}} variant="h6" component="button" fontWeight="400">Start Learning Today</Typography>
+                    <Typography sx={{ display: { xs: "block", sm: "none" }}} variant="body2" component="button" fontWeight="400">Start Learning Today</Typography>
                   </Button>
                 </Link>
               </CardContent>
