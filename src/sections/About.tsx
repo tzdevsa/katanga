@@ -61,7 +61,7 @@ export default function About({
                     size="large"
                     sx={{ borderRadius: 0, pt: 1.3, pb: 1.3, pl: 7, pr: 7 }}
                   >
-                    <Typography variant="body2" component="button" fontWeight="400">Learn More</Typography>
+                    <Typography variant="body2" fontWeight="400">Learn More</Typography>
                   </Button>
                 </ConditionalLink>
               </CardContent>

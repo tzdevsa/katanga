@@ -33,7 +33,7 @@ export default async function Team({ staff }: { staff: Staff[] }) {
           spacing={1}
         >
           {staff?.slice(0, 6).map((staff: Staff) => (
-            <Grid key={staff.staffId} item xs={12} sm={2}>
+            <Grid key={staff.staffId} item xs={6} sm={2}>
               <ProfileCard staff={staff} />
             </Grid>
           ))}
