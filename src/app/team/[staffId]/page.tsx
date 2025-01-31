@@ -157,26 +157,28 @@ export default async function TeamMember({
                   }}
                 >
                   <CardContent>
-                    <CardContent>
-                      <Typography
-                        variant="h5"
-                        fontWeight="bold"
-                        align="left"
-                        gutterBottom
-                        textTransform="uppercase"
-                      >
-                        BIO
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        fontWeight={500}
-                        lineHeight={2}
-                        fontSize={18}
-                        color="textSecondary"
-                      >
-                        {staff?.bio ?? "bio"}
-                      </Typography>
-                    </CardContent>
+                    {staff?.bio && (
+                      <CardContent>
+                        <Typography
+                          variant="h5"
+                          fontWeight="bold"
+                          align="left"
+                          gutterBottom
+                          textTransform="uppercase"
+                        >
+                          BIO
+                        </Typography>
+                        <Typography
+                          variant="subtitle1"
+                          fontWeight={500}
+                          lineHeight={2}
+                          fontSize={18}
+                          color="textSecondary"
+                        >
+                          {staff?.bio}
+                        </Typography>
+                      </CardContent>
+                    )}
                     {staff?.credentials && (
                       <CardContent>
                         <Typography
