@@ -28,7 +28,7 @@ export default async function Team({ staff }: { staff: Staff[] }) {
         <Grid
           container
           direction="row"
-          justifyContent="flex-start"
+          justifyContent={staff?.length > 5 ? "space-evenly": "flex-start"}
           alignItems="flex-start"
           spacing={1}
         >

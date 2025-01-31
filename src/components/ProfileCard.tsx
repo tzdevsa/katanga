@@ -29,8 +29,8 @@ export default function ProfileCard({
         backgroundSize: "cover",
         backgroundPosition: "50%",
         backgroundRepeat: "no-repeat",
-        height: "206px",
-        width: "206px"
+        height: "185px",
+        width: "185px"
       }}
     >
       <Link href={`/team/${staff.staffId}/#team`}>
@@ -43,9 +43,9 @@ export default function ProfileCard({
             "&:hover": {
               backgroundImage:
                 "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2))",
-              height: "202px",
+              height: "185px",
             },
-            height: "206px",
+            height: "190px",
             backgroundImage:
               "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0))",
           }}
