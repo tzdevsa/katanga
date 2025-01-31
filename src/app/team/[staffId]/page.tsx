@@ -119,7 +119,7 @@ export default async function TeamMember({
                       borderBottom: "5px solid #d12627",
                     },
                     backgroundImage: `url(${staff?.image?.src ??
-                      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"})`,
+                      "/placeholder-profile-icon.png"})`,
                     backgroundSize: "cover",
                     backgroundPosition: "50%",
                     backgroundRepeat: "no-repeat",
