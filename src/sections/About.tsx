@@ -1,20 +1,35 @@
-'use client';
-import { CardContent, Container, Grid, Typography } from "@mui/material";
+import { Button, CardContent, Container, Grid, Typography } from "@mui/material";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { Environment, Service } from "@think-zambia-foundation/api";
+import { Environment } from "@think-zambia-foundation/api";
 import Link from "next/link";
-import ServiceCard from "@/components/ServiceCard";
 
 export default function About({ 
-  services,
-  organisation
+  organisation,
+  href
 }: { 
-  services: Service[] 
-  organisation: Environment
+  organisation: Environment,
+  href?: string
 }) {
+
+  interface ConditionalLinkProps {
+    href?: string;
+    children: React.ReactNode;
+  }
+
+  const ConditionalLink: React.FC<ConditionalLinkProps> = ({ href, children }) => {
+    return href ? (
+      <Link href={href}>
+        {children}
+      </Link>
+    ) : (
+      <>{children}</>
+    );
+  };
+
+  if (!organisation?.about) return <></>
   return (
-    <section>
-      <Container id="about" maxWidth="lg">
+    <section id="about">
+      <Container maxWidth="lg">
         <Grid
           container
           direction="row"
@@ -24,82 +39,33 @@ export default function About({
         >
           <Grid item xs={12}>
             <CardContent>
-              <Link href="/about">
+              <ConditionalLink href={href}>
                 <Typography
-                  sx={{
-                    display: { xs: 'none', md: 'block' }, // Larger screens only
-                  }}
-                  variant="h4"
-                  component="h6"
-                  fontWeight="bold"
+                  variant="button"
+                  component={ href ? "button" : "p" }
                   align="left"
                   gutterBottom
-                  textTransform="uppercase">
-                  ABOUT<ArrowRightIcon color="primary" />
+                  textTransform="capitalize">
+                  About Us<ArrowRightIcon fontSize="small" color="primary" />
                 </Typography>
-                <Typography
-                  sx={{
-                    display: { xs: 'block', md: 'none' }, // Mobile only
-                  }}
-                  variant="h6"
-                  component="h6"
-                  fontWeight="bold"
-                  align="left"
-                  gutterBottom
-                  textTransform="uppercase">
-                  ABOUT<ArrowRightIcon color="primary" />
-                </Typography>
-              </Link>
-              <Typography variant="h6" align="left" fontWeight="500" gutterBottom>
-                Welcome to {organisation?.name}, where we nurture academic excellence and moral integrity. Guided by Christian principles, we offer an all-embracing education that inspires our students to excel and become morally responsible citizens.
+              </ConditionalLink>
+              <Typography variant="h5" align="left">
+                {organisation?.about}
               </Typography>
             </CardContent>
-          </Grid>
-          <Grid item xs={12}>
-            <CardContent>
-              <Link href="/services">
-                <Typography
-                  sx={{
-                    display: { xs: 'none', md: 'block' }, // Larger screens only
-                  }}
-                  variant="h4"
-                  component="h6"
-                  fontWeight="bold"
-                  align="left"
-                  gutterBottom
-                  textTransform="uppercase">
-                  WHAT WE OFFER<ArrowRightIcon color="primary" />
-                </Typography>
-                <Typography
-                  sx={{
-                    display: { xs: 'block', md: 'none' }, // Mobile only
-                  }}
-                  variant="h6"
-                  component="h6"
-                  fontWeight="bold"
-                  align="left"
-                  gutterBottom
-                  textTransform="uppercase">
-                  WHAT WE OFFER<ArrowRightIcon color="primary" />
-                </Typography>
-              </Link>
-            </CardContent>
-            <Grid
-              sx={{
-                padding: 1,
-              }}
-              container
-              direction="row"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              spacing={1}
-            >
-              {services?.map((service) => (
-                <Grid item xs={12} sm={4} key={service.serviceId}>
-                  <ServiceCard service={service} />
-                </Grid>
-              ))}
-            </Grid>
+            {href && (
+              <CardContent>
+                <ConditionalLink href={href}>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    sx={{ borderRadius: 0, pt: 1.3, pb: 1.3, pl: 7, pr: 7 }}
+                  >
+                    <Typography variant="body2" fontWeight="400">Learn More</Typography>
+                  </Button>
+                </ConditionalLink>
+              </CardContent>
+            )}
           </Grid>
         </Grid>
       </Container>

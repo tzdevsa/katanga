@@ -1,16 +1,16 @@
-import { getStaff } from "@/actions/getStaff";
-import ProfileCard from "@/components/ProfileCard";
+import { getServices } from "@/actions/getServices";
+import ServiceCard from "@/components/ServiceCard";
 import { Container, Grid } from "@mui/material";
-import { Staff } from "@think-zambia-foundation/api";
+import { Service } from "@think-zambia-foundation/api";
 import { headers } from "next/headers";
 
 export default async function AboutPage() {
   const requestHeaders = await headers();
   const organisationId = requestHeaders.get("x-organisation-id");
     
-  let staff = null;
+  let services = null;
   if (organisationId) {
-    staff = await getStaff(organisationId);
+    services = await getServices(organisationId);
   }
 
   return (
@@ -24,9 +24,9 @@ export default async function AboutPage() {
             alignItems="flex-start"
             spacing={1}
           >
-            {staff?.map((staff: Staff) => (
-              <Grid key={staff.staffId} item xs={6} sm={2}>
-                <ProfileCard staff={staff} />
+            {services?.map((service: Service) => (
+              <Grid key={service.serviceId} item xs={12} sm={4}>
+                <ServiceCard service={service} />
               </Grid>
             ))}
           </Grid>

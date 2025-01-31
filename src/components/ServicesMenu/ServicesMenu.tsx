@@ -23,7 +23,8 @@ import {
 } from '@mui/material';
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image';
+import { Logo } from '../Logo';
+import { Environment } from '@think-zambia-foundation/api';
 
 export interface ServicesMenuItemProps {
   key: string
@@ -36,13 +37,13 @@ export interface ServicesMenuItemProps {
 
 export interface ServicesMenuProps {
   services: ServicesMenuItemProps[],
-  logo: string,
+  organisation?: Environment,
   color: TypographyProps['color']
 }
 
 export function ServicesMenu({
   services,
-  logo,
+  organisation,
   color,
 }: ServicesMenuProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -91,7 +92,6 @@ export function ServicesMenu({
       <Container
         onMouseLeave={handlePopperClose}
         sx={{ display: { xs: 'none', sm: 'block' } }}
-        maxWidth="xl"
       >
         {content && (
           <Popper
@@ -146,11 +146,7 @@ export function ServicesMenu({
                 handlePopperClose();
               }}
             >
-              <Image
-                src={logo}
-                width={127}
-                alt="Umeh Construction — Logo"
-              />
+              <Logo organisation={organisation}/>
             </CardContent>
           </Grid>
           <Grid item>
@@ -221,7 +217,6 @@ export function ServicesMenu({
       <Container
         onMouseLeave={handlePopperClose}
         sx={{ display: { xs: 'block', sm: 'none' } }}
-        maxWidth="xl"
       >
         {content && (
           <Popper
@@ -276,11 +271,7 @@ export function ServicesMenu({
                 handlePopperClose();
               }}
             >
-              <Image
-                src={logo}
-                width={127}
-                alt="Umeh Construction — Logo"
-              />
+              <Logo organisation={organisation} />
             </CardContent>
           </Grid>
           <Grid item>

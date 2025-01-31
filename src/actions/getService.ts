@@ -1,8 +1,8 @@
 "use server";
 
-import { Staff } from "@think-zambia-foundation/api";
+import { Service } from "@think-zambia-foundation/api";
 
-export const getStaff = async (organisationId: string) => {
+export const getServiceById = async (serviceId: string, organisationId: string) => {
   try {
     const options = {
       // Option to revalidate the data stored in cache
@@ -11,14 +11,16 @@ export const getStaff = async (organisationId: string) => {
         "x-api-key": `${process.env.TZ_API_KEY}`,
       }),
     };
-    
+
     return await fetch(
-      `${process.env.CORE_API}/organisation/${organisationId}/staff`,
+      `${process.env.CORE_API}/organisation/${organisationId}/services/${serviceId}`,
       options
     )
       .then((response) => response.json())
       .then((response) => response.data)
-      .then((data: Staff[]) => data ?? []);
-  } catch {
+      .then((data: Service) => data ?? null);
+  } catch (error) {
+    console.error(error);
+    return null;
   }
 };

@@ -6,25 +6,31 @@ import { Staff } from "@think-zambia-foundation/api";
 import Link from "next/link";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-export default function ProfileCard({ staff }: { staff: Staff }) {
+export default function ProfileCard({ 
+  staff,
+}: { 
+  staff: Staff
+}) {
   const backgroundUrl =
     staff?.image?.thumbnail ||
     staff?.image?.src ||
-    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+    "/placeholder-profile-icon.png";
 
-  const position = staff?.positions[0]?.job?.description;
+  const position = staff?.positions[0]?.job?.title;
 
   return (
     <Box
       sx={{
         "&:hover": {
-          borderBottom: "5px solid #d12627",
+          borderBottom: "5px solid #ab0520",
         },
         backgroundImage: `url(${backgroundUrl})`,
+        backgroundColor: "whitesmoke",
         backgroundSize: "cover",
         backgroundPosition: "50%",
         backgroundRepeat: "no-repeat",
-        height: "365px",
+        height: "185px",
+        width: "185px"
       }}
     >
       <Link href={`/team/${staff.staffId}/#team`}>
@@ -37,19 +43,19 @@ export default function ProfileCard({ staff }: { staff: Staff }) {
             "&:hover": {
               backgroundImage:
                 "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2))",
-              height: "360px",
+              height: "185px",
             },
-            height: "365px",
+            height: "190px",
             backgroundImage:
               "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0))",
           }}
         >
           <Grid item xs={12}>
             <CardContent>
-              <Typography variant="h6" color="white" textTransform="uppercase" fontWeight="bold">
-                {staff?.profile?.firstName ?? ""} {staff?.profile?.lastName ?? ""}<ArrowRightIcon color="primary" />
+              <Typography variant="body2" color="white" textTransform="uppercase" fontWeight="bold">
+                {staff?.profile?.firstName ?? ""} {staff?.profile?.lastName ?? ""}<ArrowRightIcon fontSize="small" color="primary" />
               </Typography>
-              <Typography variant="body2" color="whitesmoke" textTransform="uppercase">
+              <Typography variant="caption" fontWeight="bold" color="whitesmoke" textTransform="capitalize">
                 {position}
               </Typography>
             </CardContent>

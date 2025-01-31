@@ -47,7 +47,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               header={index.title}
               subHeader={index.description}
               src={index.src}
-              height={props.imageHeight ?? 800}
+              height={props.imageHeight ?? 735}
               gradient={overlay}
             />
           ))}

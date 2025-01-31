@@ -6,8 +6,8 @@ import { Environment, Service } from "@think-zambia-foundation/api";
 
 const OPTIONS: EmblaOptionsType = { loop: true }
 
-export default async function Hero({organization} : {organization: Environment}) {
-  const services = await getServices(organization.envId);
+export default async function Hero({organisation} : {organisation: Environment}) {
+  const services = await getServices(organisation.envId);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const slides: any[] = services.map((service: Service) => ({

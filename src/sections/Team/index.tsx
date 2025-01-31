@@ -1,26 +1,39 @@
 import {
+  CardContent,
   Container,
   Grid,
+  Typography,
 } from "@mui/material";
-import { getStaff } from "@/actions/getStaff";
 import { Staff } from "@think-zambia-foundation/api";
 import ProfileCard from "@/components/ProfileCard";
+import Link from "next/link";
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-export default async function Team({ organizationId }: { organizationId: string }) {
-  const staff = await getStaff(organizationId);
-
+export default async function Team({ staff }: { staff: Staff[] }) {  
   return (
     <section id="team">
       <Container maxWidth="lg">
+        <CardContent>
+          <Link href="/team">
+            <Typography
+              variant="button"
+              component="h6"
+              align="left"
+              gutterBottom
+              textTransform="capitalize">
+              Meet The Team<ArrowRightIcon fontSize="small" color="primary" />
+            </Typography>
+          </Link>
+        </CardContent>
         <Grid
           container
           direction="row"
-          justifyContent="center"
+          justifyContent={staff?.length > 5 ? "space-evenly": "flex-start"}
           alignItems="flex-start"
-          spacing={3}
+          spacing={1}
         >
-          {staff?.map((staff: Staff) => (
-            <Grid key={staff.staffId} item xs={12} sm={4}>
+          {staff?.slice(0, 6).map((staff: Staff) => (
+            <Grid key={staff.staffId} item xs={6} sm={2}>
               <ProfileCard staff={staff} />
             </Grid>
           ))}
@@ -29,15 +42,4 @@ export default async function Team({ organizationId }: { organizationId: string 
     </section>
   );
 }
-
-
-{/* <Profile
-  linkedIn="https://www.linkedin.com/in/latrice-umeh-8a72b159/"
-/> 
-
-* <Profile    
-    credentials="Victor Umeh holds a Bachelor of Science in Civil Engineering with a minor in Business Marketing from the University of Arizona."
-    linkedIn="https://www.linkedin.com/in/victor-umeh-entrepreneur/"
-    quote="At Umeh Construction, we are dedicated to creating exceptional results by focusing on projects we are passionate about, ensuring that we exceed expectations every time."
-  /> */}
 

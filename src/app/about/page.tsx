@@ -1,22 +1,27 @@
-import { HeroImage } from "@/components/HeroImage";
+import { getOrganisation } from "@/actions/getOrganisation";
+import { getStaff } from "@/actions/getStaff";
+import About from "@/sections/About";
+import Motto from "@/sections/Motto";
 import Team from "@/sections/Team";
+import { headers } from "next/headers";
 
-type Params = Promise<{ organizationId: string }>;
+export default async function AboutPage() {
+  const requestHeaders = await headers();
+  const organisationId = requestHeaders.get("x-organisation-id");
+  
+  let organisation = null;
+  let staff = null;
 
-export default async function AboutPage({
-  params,
-}: {
-  params: Params;
-}) {
-  const { organizationId } = await params;
+  if (organisationId) {
+    organisation = await getOrganisation(organisationId);
+    staff = await getStaff(organisationId);
+  }
+
   return (
     <>
-      <HeroImage
-        header="ABOUT"
-        height={375}
-        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      />
-      <Team organizationId={organizationId} />
+      {organisation?.motto && (<Motto organisation={organisation} />)}
+      {organisation && (<About organisation={organisation} />)}
+      {staff && (<Team staff={staff} />)}
     </>
   );
 }

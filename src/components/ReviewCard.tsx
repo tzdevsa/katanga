@@ -1,9 +1,11 @@
+"use client"
+
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
-import { Avatar, CardHeader, Grid } from '@mui/material';
+import { Avatar, CardHeader } from '@mui/material';
 
 interface ReviewCardProps {
   name: string
@@ -19,6 +21,9 @@ export function ReviewCard({
   rating,
   avatar,
 }: ReviewCardProps) {
+  const [expanded, setExpanded] = React.useState(false);
+  const shortText = text.length > 100 ? text.substring(0, 100) + "..." : text;
+
   return (
     <Card
       elevation={0}
@@ -30,28 +35,37 @@ export function ReviewCard({
       }}
     >
       <CardHeader
-        avatar={<Avatar alt={name} src={avatar} />}
-        title={<Rating sx={{
-          color: "primary.main",
-        }} name="read-only" value={rating} readOnly />}
+        avatar={<Avatar alt={name} src={avatar} sx={{ width: 75, height: 75 }}/>}
+        title={
+          <>
+            {name && (
+              <Typography variant="body2" gutterBottom sx={{ pl: 1 }}>
+                {name}
+              </Typography>
+            )}
+            <Rating 
+              sx={{
+                color: "primary.main",
+              }} 
+              name={name}
+              value={rating} readOnly
+            />
+          </>
+        }
       />
       <CardContent>
-        <Grid container spacing={2}>
           {text && (
-            <Grid item xs={12}>
-              <Typography variant="subtitle2" color="text.secondary" fontWeight={500}>
-                {`"${text}"`}
+            <>
+              <Typography variant="body2" color="text.secondary" gutterBottom>
+                {expanded ? `"${text}"` : `"${shortText}"`}
               </Typography>
-            </Grid>
+              {text.length > 100 && (
+                <Typography textTransform="capitalize" variant='button' color="primary" onClick={() => setExpanded(!expanded)}>
+                  {expanded ? "Show Less" : "Read More"}
+                </Typography>
+              )}
+            </>
           )}
-          {name && (
-            <Grid item xs={12}>
-              <Typography variant="body2">
-                {`- ${name}`}
-              </Typography>
-            </Grid>
-          )}
-        </Grid>
       </CardContent>
     </Card>
   );
