@@ -6,7 +6,11 @@ import { Staff } from "@think-zambia-foundation/api";
 import Link from "next/link";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-export default function ProfileCard({ staff }: { staff: Staff }) {
+export default function ProfileCard({ 
+  staff,
+}: { 
+  staff: Staff
+}) {
   const backgroundUrl =
     staff?.image?.thumbnail ||
     staff?.image?.src ||
@@ -18,13 +22,14 @@ export default function ProfileCard({ staff }: { staff: Staff }) {
     <Box
       sx={{
         "&:hover": {
-          borderBottom: "5px solid #d12627",
+          borderBottom: "5px solid #ab0520",
         },
         backgroundImage: `url(${backgroundUrl})`,
         backgroundSize: "cover",
         backgroundPosition: "50%",
         backgroundRepeat: "no-repeat",
-        height: "365px",
+        height: "249px",
+        width: "249px"
       }}
     >
       <Link href={`/team/${staff.staffId}/#team`}>
@@ -37,19 +42,19 @@ export default function ProfileCard({ staff }: { staff: Staff }) {
             "&:hover": {
               backgroundImage:
                 "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2))",
-              height: "360px",
+              height: "244px",
             },
-            height: "365px",
+            height: "249px",
             backgroundImage:
               "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0))",
           }}
         >
           <Grid item xs={12}>
             <CardContent>
-              <Typography variant="h6" color="white" textTransform="uppercase" fontWeight="bold">
+              <Typography variant="subtitle2" color="white" textTransform="uppercase" fontWeight="bold">
                 {staff?.profile?.firstName ?? ""} {staff?.profile?.lastName ?? ""}<ArrowRightIcon fontSize="small" color="primary" />
               </Typography>
-              <Typography variant="body2" color="whitesmoke" textTransform="uppercase">
+              <Typography variant="body2" color="whitesmoke" textTransform="capitalize">
                 {position}
               </Typography>
             </CardContent>

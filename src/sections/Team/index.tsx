@@ -30,9 +30,9 @@ export default async function Team({ staff }: { staff: Staff[] }) {
           direction="row"
           justifyContent="flex-start"
           alignItems="flex-start"
-          spacing={3}
+          spacing={1}
         >
-          {staff?.map((staff: Staff) => (
+          {staff?.slice(0, 5).map((staff: Staff) => (
             <Grid key={staff.staffId} item xs={12} sm={4}>
               <ProfileCard staff={staff} />
             </Grid>
