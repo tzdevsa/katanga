@@ -30,13 +30,13 @@ export default async function TeamMember({
           display: { xs: 'none', md: 'block' }, // Larger screens only
         }}>
           <Container maxWidth="lg">
-            <Link href={`/about`}>
+            <Link href={`/team`}>
               <Typography
                 variant='body2'
                 textTransform="uppercase"
                 fontWeight="bold"
               >
-                Back to About<ArrowRightIcon fontSize="small" color="primary" />
+                Back to Team<ArrowRightIcon fontSize="small" color="primary" />
               </Typography>
             </Link>
           </Container>
@@ -52,7 +52,7 @@ export default async function TeamMember({
                 textTransform="capitalize"
                 fontWeight="500"
               >
-                Back to About<ArrowRightIcon fontSize="small" color="primary" />
+                Back to Team<ArrowRightIcon fontSize="small" color="primary" />
               </Typography>
             </Link>
           </Container>
