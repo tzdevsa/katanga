@@ -1,5 +1,7 @@
 import { getStaff } from "@/actions/getStaff";
-import Team from "@/sections/Team";
+import ProfileCard from "@/components/ProfileCard";
+import { Container, Grid } from "@mui/material";
+import { Staff } from "@think-zambia-foundation/api";
 import { headers } from "next/headers";
 
 export default async function AboutPage() {
@@ -13,8 +15,22 @@ export default async function AboutPage() {
 
   return (
     <main>
-      <section>
-        {staff && (<Team staff={staff} />)}
+      <section id="team">
+        <Container maxWidth="lg">
+          <Grid
+            container
+            direction="row"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+            spacing={1}
+          >
+            {staff?.slice(0, 6).map((staff: Staff) => (
+              <Grid key={staff.staffId} item xs={12} sm={2}>
+                <ProfileCard staff={staff} />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       </section>
     </main>
   );

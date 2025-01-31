@@ -14,7 +14,7 @@ export default async function Team({ staff }: { staff: Staff[] }) {
     <section id="team">
       <Container maxWidth="lg">
         <CardContent>
-          <Link href="/about">
+          <Link href="/team">
             <Typography
               variant="button"
               component="h6"
@@ -32,8 +32,8 @@ export default async function Team({ staff }: { staff: Staff[] }) {
           alignItems="flex-start"
           spacing={1}
         >
-          {staff?.slice(0, 5).map((staff: Staff) => (
-            <Grid key={staff.staffId} item xs={12} sm={4}>
+          {staff?.slice(0, 6).map((staff: Staff) => (
+            <Grid key={staff.staffId} item xs={12} sm={2}>
               <ProfileCard staff={staff} />
             </Grid>
           ))}

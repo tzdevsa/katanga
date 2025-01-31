@@ -28,8 +28,8 @@ export default function ProfileCard({
         backgroundSize: "cover",
         backgroundPosition: "50%",
         backgroundRepeat: "no-repeat",
-        height: "249px",
-        width: "249px"
+        height: "206px",
+        width: "206px"
       }}
     >
       <Link href={`/team/${staff.staffId}/#team`}>
@@ -42,19 +42,19 @@ export default function ProfileCard({
             "&:hover": {
               backgroundImage:
                 "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2))",
-              height: "244px",
+              height: "202px",
             },
-            height: "249px",
+            height: "206px",
             backgroundImage:
               "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0))",
           }}
         >
           <Grid item xs={12}>
             <CardContent>
-              <Typography variant="subtitle2" color="white" textTransform="uppercase" fontWeight="bold">
+              <Typography variant="body2" color="white" textTransform="uppercase" fontWeight="bold">
                 {staff?.profile?.firstName ?? ""} {staff?.profile?.lastName ?? ""}<ArrowRightIcon fontSize="small" color="primary" />
               </Typography>
-              <Typography variant="body2" color="whitesmoke" textTransform="capitalize">
+              <Typography variant="caption" fontWeight="bold" color="whitesmoke" textTransform="capitalize">
                 {position}
               </Typography>
             </CardContent>
